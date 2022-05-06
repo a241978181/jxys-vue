@@ -15,12 +15,13 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
  * @author 李建
  */
 public class BaseEntity implements Serializable {
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-
     /** 创建者 */
     @TableField(fill = FieldFill.INSERT)
     private String createBy;
+
+    /** 创建人名称 */
+    @TableField(exist = false)
+    private String createMc;
 
     /** 创建时间 */
     @TableField(fill = FieldFill.INSERT)
@@ -29,6 +30,10 @@ public class BaseEntity implements Serializable {
     /** 更新者 */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateBy;
+
+    /** 修改人名称 */
+    @TableField(exist = false)
+    private String updateMc;
 
     /** 更新时间 */
     @TableField(fill = FieldFill.INSERT_UPDATE)
@@ -46,6 +51,22 @@ public class BaseEntity implements Serializable {
     /** 请求参数 */
     @TableField(exist = false)
     private Map<String, Object> params;
+
+    public String getCreateMc() {
+        return createMc;
+    }
+
+    public void setCreateMc(String createMc) {
+        this.createMc = createMc;
+    }
+
+    public String getUpdateMc() {
+        return updateMc;
+    }
+
+    public void setUpdateMc(String updateMc) {
+        this.updateMc = updateMc;
+    }
 
     public Integer getDeleted() {
         return deleted;
