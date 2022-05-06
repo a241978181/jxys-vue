@@ -2,6 +2,9 @@ package com.jxys.test.service.impl;
 
 import com.jxys.common.utils.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.jxys.system.mapper.SysUserMapper;
+import javax.annotation.Resource;
+import java.util.stream.Collectors;
 import java.util.List;
 import com.jxys.common.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +23,8 @@ import com.jxys.test.service.TestNameService;
 public class TestNameServiceImpl implements TestNameService {
     @Autowired
     private TestNameMapper testNameMapper;
-
+    @Resource
+    private SysUserMapper sysUserMapper;
 
     /**
      * 查询测试名称
@@ -48,12 +52,17 @@ public class TestNameServiceImpl implements TestNameService {
         if(StringUtils.isNotNull(testName.getName())  &&StringUtils.isNotEmpty(testName.getName()) ){
             queryWrapper.like("name", testName.getName());
         }
-        if(StringUtils.isNotNull(testName.getTest())  &&StringUtils.isNotEmpty(testName.getTest()) ){
-            queryWrapper.eq("test", testName.getTest());
 
-        }
+        //查询数据
+        List<TestName> list=testNameMapper.selectList(queryWrapper);
+        //查询创建人和修改人
+        list.stream().map(obj -> {
+            obj.setCreateMc(this.sysUserMapper.selectNickUserByUserName(obj.getCreateBy()));
+            obj.setUpdateMc(this.sysUserMapper.selectNickUserByUserName(obj.getUpdateBy()));
+            return obj;
+        }).collect(Collectors.toList());
 
-        return testNameMapper.selectList(queryWrapper);
+        return list;
     }
 
     /**

@@ -44,6 +44,15 @@ public interface SysUserMapper
     public SysUser selectUserByUserName(String userName);
 
     /**
+     * 通过用户名查询用户昵称
+     *
+     * @param userName 用户名
+     * @return 用户对象信息
+     */
+    public String selectNickUserByUserName(String userName);
+
+
+    /**
      * 通过用户ID查询用户
      * 
      * @param userId 用户ID

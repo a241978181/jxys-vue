@@ -63,7 +63,7 @@
 
     <el-table v-loading="loading" :data="nameList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column show-overflow-tooltip label="主键" align="center" prop="id" width="200" />
+      <el-table-column show-overflow-tooltip label="主键" align="center" prop="id" min-width="200" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime, '{y}-{m}-{d}') }}</span>
@@ -107,14 +107,11 @@
     <!-- 添加或修改测试名称对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="200px">
-        <el-form-item label="逻辑删除" prop="deleted">
-          <el-input v-model="form.deleted" placeholder="请输入逻辑删除" />
-        </el-form-item>
         <el-form-item label="名称" prop="name">
           <el-input v-model="form.name" placeholder="请输入名称" />
         </el-form-item>
         <el-form-item label="测试文本" prop="test">
-          <el-input v-model="form.test" type="textarea" placeholder="请输入内容" />
+          <el-input v-model="form.test" placeholder="请输入测试文本" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -155,7 +152,6 @@ export default {
         pageNum: 1,
         pageSize: 10,
         name: null,
-        test: null
       },
       // 表单参数
       form: {},
@@ -267,4 +263,3 @@ export default {
   }
 };
 </script>
-

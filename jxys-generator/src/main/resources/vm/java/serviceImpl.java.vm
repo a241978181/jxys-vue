@@ -2,6 +2,9 @@ package ${packageName}.service.impl;
 
 import com.jxys.common.utils.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.jxys.system.mapper.SysUserMapper;
+import javax.annotation.Resource;
+import java.util.stream.Collectors;
 import java.util.List;
     #foreach ($column in $columns)
         #if($column.javaField == 'createTime' || $column.javaField == 'updateTime')
@@ -31,7 +34,8 @@ import ${packageName}.service.${ClassName}Service;
 public class ${ClassName}ServiceImpl implements ${ClassName}Service {
     @Autowired
     private ${ClassName}Mapper ${className}Mapper;
-
+    @Resource
+    private SysUserMapper sysUserMapper;
 
     /**
      * 查询${functionName}
@@ -100,7 +104,16 @@ public class ${ClassName}ServiceImpl implements ${ClassName}Service {
             #end
         #end
 
-        return ${className}Mapper.selectList(queryWrapper);
+        //查询数据
+        List<${ClassName}> list=${className}Mapper.selectList(queryWrapper);
+        //查询创建人和修改人
+        list.stream().map(obj -> {
+            obj.setCreateMc(this.sysUserMapper.selectNickUserByUserName(obj.getCreateBy()));
+            obj.setUpdateMc(this.sysUserMapper.selectNickUserByUserName(obj.getUpdateBy()));
+            return obj;
+        }).collect(Collectors.toList());
+
+        return list;
     }
 
     /**
