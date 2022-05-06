@@ -177,6 +177,13 @@
                 <version>${jxys.version}</version>
             </dependency>
 
+            <!-- 业务-->
+            <dependency>
+                <groupId>com.jxys</groupId>
+                <artifactId>jxys-business</artifactId>
+                <version>${jxys.version}</version>
+            </dependency>
+
             <!-- 核心模块-->
             <dependency>
                 <groupId>com.jxys</groupId>
@@ -208,6 +215,7 @@
         <module>jxys-quartz</module>
         <module>jxys-generator</module>
         <module>jxys-common</module>
+        <module>jxys-business</module>
     </modules>
     <packaging>pom</packaging>
 

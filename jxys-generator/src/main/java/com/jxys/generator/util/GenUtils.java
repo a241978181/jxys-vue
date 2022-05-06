@@ -46,9 +46,9 @@ public class GenUtils
 
         if (arraysContains(GenConstants.COLUMNTYPE_STR, dataType) || arraysContains(GenConstants.COLUMNTYPE_TEXT, dataType))
         {
-            // 字符串长度超过500设置为文本域
+            // 字符串长度超过400设置为文本域
             Integer columnLength = getColumnLength(column.getColumnType());
-            String htmlType = columnLength >= 500 || arraysContains(GenConstants.COLUMNTYPE_TEXT, dataType) ? GenConstants.HTML_TEXTAREA : GenConstants.HTML_INPUT;
+            String htmlType = columnLength >= 400 || arraysContains(GenConstants.COLUMNTYPE_TEXT, dataType) ? GenConstants.HTML_TEXTAREA : GenConstants.HTML_INPUT;
             column.setHtmlType(htmlType);
         }
         else if (arraysContains(GenConstants.COLUMNTYPE_TIME, dataType))
@@ -80,7 +80,6 @@ public class GenUtils
 
         // 插入字段（默认所有字段都需要插入）
         column.setIsInsert(GenConstants.REQUIRE);
-
         // 编辑字段
         if (!arraysContains(GenConstants.COLUMNNAME_NOT_EDIT, columnName) && !column.isPk())
         {
