@@ -114,7 +114,7 @@
       </el-card>
     </div>
     <div class="hengYes">
-      <el-card class="box-card" style="width: 100%;height: 800px;">
+      <el-card class="box-card" style="width: 100%;height: 600px;">
         <div slot="header" class="clearfix">
           <span>富文本编辑器</span>
         </div>
@@ -130,6 +130,24 @@
         </div>
       </el-card>
     </div>
+    <div class="hengYes">
+      <el-card class="box-card" style="width: 50%;height: 500px;">
+        <div slot="header" class="clearfix">
+          <span>灵活操作地图</span>
+        </div>
+        <div class="component-item">
+          <olmap :zoom=3.8 :adcode="100000" ref="olmap" @mapClick="mapClick" style="height: 400px;"/>
+        </div>
+      </el-card>
+      <el-card class="box-card" style="width: 50%;height: 500px;">
+        <div slot="header" class="clearfix">
+          <span>固定数据地图</span>
+        </div>
+        <div class="component-item">
+          <olmap :is-zoom="false" :is-drag="false" :zoom=3.8 :mapType="0" ref="olmap2" style="height: 400px;"/>
+        </div>
+      </el-card>
+    </div>
 
     <el-dialog title="这是可出界移动弹出框" v-dialogDrag :visible.sync="KCJdialogVisible" width="30%" :before-close="handleClose">
       <span>这是可出界移动弹出框！！</span>
@@ -142,6 +160,7 @@ import Mallki from '@/components/TextHoverEffect/Mallki'
 import MdInput from '@/components/MDinput'
 import ElDragSelect from '@/components/DragSelect' // base on element-ui
 import Tinymce from '@/components/Tinymce'
+import Olmap from '@/components/Map/Olmap.vue'
 export default {
   name: "Index",
   components: {
@@ -149,7 +168,8 @@ export default {
     Mallki,
     MdInput,
     ElDragSelect,
-    Tinymce
+    Tinymce,
+    Olmap,
   },
   data() {
     const validate = (rule, value, callback) => {
@@ -192,6 +212,13 @@ export default {
     console.log(this.pinyin('汉语拼音',{pattern:'pinyin',toneType:'none'}));
   },
   methods: {
+    //地图点击事件
+    mapClick(featureInfo) { // 地图的点击事件
+      //切换地图显示
+      if (featureInfo.level=='province'||featureInfo.level=='city'){
+        this.$refs.olmap.clearMap(featureInfo.adcode)
+      }
+    },
     //弹出框关闭提醒
     handleClose(done) {
       this.$confirm('确认关闭？')
