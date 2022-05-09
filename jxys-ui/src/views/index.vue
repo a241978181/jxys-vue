@@ -137,7 +137,7 @@
   </div>
 </template>
 <script>
-import  PanThumb from "@/components/PanThumb/index"
+import PanThumb from "@/components/PanThumb/index"
 import Mallki from '@/components/TextHoverEffect/Mallki'
 import MdInput from '@/components/MDinput'
 import ElDragSelect from '@/components/DragSelect' // base on element-ui
@@ -186,6 +186,10 @@ export default {
         label: 'Strawberry'
       }]
     };
+  },
+  mounted() {
+    //测试拼音转换功能
+    console.log(this.pinyin('汉语拼音',{pattern:'pinyin',toneType:'none'}));
   },
   methods: {
     //弹出框关闭提醒
