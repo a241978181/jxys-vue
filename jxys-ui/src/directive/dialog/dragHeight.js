@@ -1,5 +1,5 @@
 /**
-* v-dialogDragWidth 可拖动弹窗高度（右下角）
+* v-dialogDragHeight 可拖动弹窗高度（右下角）
 * Copyright (c) 2019 jxys
 */
 
