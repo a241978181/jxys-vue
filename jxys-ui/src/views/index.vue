@@ -1,8 +1,5 @@
 <template>
   <div class="shuYes">
-    <el-card class="hengYes" style="width: 100%;height: 100px;">
-      <span style="font-size: 40px;font-family: 楷体"><b>系统小组件大全</b></span>
-    </el-card>
     <div class="hengYes">
       <el-card class="box-card" style="width: 100%;height: 120px;">
         <div slot="header" class="clearfix">

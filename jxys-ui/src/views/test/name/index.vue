@@ -63,7 +63,8 @@
 
     <el-table v-loading="loading" :data="nameList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column show-overflow-tooltip label="主键" align="center" prop="id" min-width="200" />
+      <el-table-column show-overflow-tooltip label="名称" align="center" prop="name" min-width="200" />
+      <el-table-column show-overflow-tooltip label="测试文本" align="center" prop="test" min-width="200" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime, '{y}-{m}-{d}') }}</span>
@@ -74,8 +75,6 @@
           <span>{{ parseTime(scope.row.updateTime, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column show-overflow-tooltip label="名称" align="center" prop="name" min-width="200" />
-      <el-table-column show-overflow-tooltip label="测试文本" align="center" prop="test" min-width="200" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="100">
         <template slot-scope="scope">
           <el-button
