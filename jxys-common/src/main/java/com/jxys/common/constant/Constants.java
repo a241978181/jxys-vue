@@ -7,8 +7,14 @@ import io.jsonwebtoken.Claims;
  * 
  * @author jxys
  */
-public class Constants
-{
+public class Constants{
+
+
+    /**
+     * 登录用户编号 redis key
+     */
+    public static final String LOGIN_USERID_KEY = "login_userid:";
+
     /**
      * UTF-8 字符集
      */

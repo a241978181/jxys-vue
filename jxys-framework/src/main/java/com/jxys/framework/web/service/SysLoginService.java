@@ -2,6 +2,7 @@ package com.jxys.framework.web.service;
 
 import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -48,6 +49,10 @@ public class SysLoginService
     @Autowired
     private ISysConfigService configService;
 
+    // 是否允许账户多终端同时登录（true允许 false不允许）
+    @Value("${token.soloLogin}")
+    private boolean soloLogin;
+
     /**
      * 登录验证
      * 
@@ -57,8 +62,8 @@ public class SysLoginService
      * @param uuid 唯一标识
      * @return 结果
      */
-    public String login(String username, String password, String code, String uuid)
-    {
+    public String login(String username, String password, String code, String uuid){
+        //查询是否开启验证码功能
         boolean captchaOnOff = configService.selectCaptchaOnOff();
         // 验证码开关
         if (captchaOnOff)
@@ -88,6 +93,18 @@ public class SysLoginService
         }
         AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_SUCCESS, MessageUtils.message("user.login.success")));
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+        //判断是否开启了仅允许账户多终端同时登录
+        if (!soloLogin)
+        {
+            // 如果用户不允许多终端同时登录，清除缓存信息
+            String userIdKey = Constants.LOGIN_USERID_KEY + loginUser.getUser().getUserId();
+            String userKey = redisCache.getCacheObject(userIdKey);
+            if (StringUtils.isNotEmpty(userKey))
+            {
+                redisCache.deleteObject(userIdKey);
+                redisCache.deleteObject(userKey);
+            }
+        }
         recordLoginInfo(loginUser.getUserId());
         // 生成token
         return tokenService.createToken(loginUser);
