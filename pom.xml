@@ -176,6 +176,12 @@
                 <artifactId>jxys-generator</artifactId>
                 <version>${jxys.version}</version>
             </dependency>
+            <!-- 业务-->
+            <dependency>
+                <groupId>com.jxys</groupId>
+                <artifactId>jxys-data</artifactId>
+                <version>${jxys.version}</version>
+            </dependency>
 
             <!-- 业务-->
             <dependency>
@@ -216,6 +222,7 @@
         <module>jxys-generator</module>
         <module>jxys-common</module>
         <module>jxys-business</module>
+        <module>jxys-data</module>
     </modules>
     <packaging>pom</packaging>
 

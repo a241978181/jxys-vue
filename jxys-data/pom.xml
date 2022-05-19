@@ -8,12 +8,13 @@
         <version>3.8.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
-    <artifactId>jxys-admin</artifactId>
 
-    <description>
-        web服务入口
-    </description>
+    <artifactId>jxys-data</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
     <dependencies>
 
@@ -37,11 +38,8 @@
             <version>1.6.2</version>
         </dependency>
 
-         <!-- Mysql驱动包 -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
+
+
 
         <!-- 核心模块-->
         <dependency>
@@ -60,47 +58,25 @@
             <groupId>com.jxys</groupId>
             <artifactId>jxys-generator</artifactId>
         </dependency>
-        <!-- 数据-->
         <dependency>
-            <groupId>com.jxys</groupId>
-            <artifactId>jxys-data</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
         </dependency>
-        <!-- 业务-->
+        <!--阿里云 OSS-->
         <dependency>
-            <groupId>com.jxys</groupId>
-            <artifactId>jxys-business</artifactId>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>2.8.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>4.4.5</version>
+        </dependency>
+
 
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.1.1.RELEASE</version>
-                <configuration>
-                    <fork>true</fork> <!-- 如果没有该配置，devtools不会生效 -->
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>   
-                <groupId>org.apache.maven.plugins</groupId>   
-                <artifactId>maven-war-plugin</artifactId>   
-                <version>3.1.0</version>   
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <warName>${project.artifactId}</warName>
-                </configuration>   
-           </plugin>   
-        </plugins>
-        <finalName>${project.artifactId}</finalName>
-    </build>
 
 </project>
