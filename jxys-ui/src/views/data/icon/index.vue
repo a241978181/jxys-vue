@@ -179,7 +179,7 @@ export default {
         pageNum: 1,
         pageSize: 10,
         icon: null,
-        type: null
+        type: '1'
       },
       // 表单参数
       form: {},

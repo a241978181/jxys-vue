@@ -6,7 +6,7 @@ import com.jxys.system.mapper.SysUserMapper;
 import javax.annotation.Resource;
 import java.util.stream.Collectors;
 import java.util.List;
-import com.jxys.common.utils.DateUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.jxys.data.mapper.ZdIconMapper;
@@ -25,7 +25,6 @@ public class ZdIconServiceImpl implements ZdIconService {
     private ZdIconMapper zdIconMapper;
     @Resource
     private SysUserMapper sysUserMapper;
-
     /**
      * 查询icon图标
      *
@@ -49,7 +48,6 @@ public class ZdIconServiceImpl implements ZdIconService {
         //查询参数
         QueryWrapper<ZdIcon> queryWrapper = new QueryWrapper();
         queryWrapper.lambda().orderByDesc(ZdIcon::getCreateTime);
-
         if(StringUtils.isNotNull(zdIcon.getIcon())  &&StringUtils.isNotEmpty(zdIcon.getIcon()) ){
             queryWrapper.like("icon", zdIcon.getIcon());
         }
@@ -91,6 +89,7 @@ public class ZdIconServiceImpl implements ZdIconService {
      */
     @Override
     public int updateZdIcon(ZdIcon zdIcon) {
+
         return zdIconMapper.updateById(zdIcon);
     }
 
