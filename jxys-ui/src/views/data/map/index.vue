@@ -96,8 +96,14 @@
       <el-table-column show-overflow-tooltip label="简称" align="center" prop="jc" width="200" />
       <el-table-column show-overflow-tooltip label="邮编" align="center" prop="yb" width="200" />
       <el-table-column show-overflow-tooltip label="长途区号" align="center" prop="ctqh" width="200" />
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="100">
+      <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="200">
         <template slot-scope="scope">
+          <el-button
+            size="mini"
+            type="text"
+            icon="el-icon-edit"
+            @click="showMap(scope.row)"
+          >查看地图</el-button>
           <el-button
             size="mini"
             type="text"
@@ -170,16 +176,45 @@
         <el-button @click="cancel">取 消</el-button>
       </div>
     </el-dialog>
+    <!--  地图展示弹出框-->
+    <el-dialog :title="map.mapName+'地图展示'" :visible.sync="dialogVisible" width="40%" :before-close="handleClose">
+      <div style="width: 100%;height: 400px;">
+        <Olmap v-if="map.adcode" :x="map.zxdX" :y="map.zxdY" :adcode="map.adcode" ref="olmap" style="height: 369px;"/>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false;map={}">确 定</el-button>
+      </span>
+    </el-dialog>
+
   </div>
 </template>
 
 <script>
 import { listMap, getMap, delMap, addMap, updateMap } from "@/api/data/map";
-
+import Olmap from '@/components/Map/Olmap.vue'
 export default {
   name: "Map",
+  components:{
+    Olmap,
+  },
   data() {
     return {
+      //省份地图信息
+      map:{
+        //当前查询地图名称
+        mapName:'',
+        //行政区划代码
+        adcode:'',
+        //中心点X轴坐标
+        zxdX:0,
+        //中心点Y轴坐标
+        zxdY:0,
+        //缩放级别
+        zoom:0,
+      },
+      //地图展示弹出框键
+      dialogVisible: false,
       //地区级别
       jbList:[{
         value:'0',
@@ -231,6 +266,25 @@ export default {
     this.getList();
   },
   methods: {
+    //查看地图
+    showMap(row){
+      this.map={
+          mapName:row.mc,
+          adcode:row.adcode,
+          zxdX:row.zxdX,
+          zxdY:row.zxdY,
+          zoom:row.zoom,
+      }
+      this.dialogVisible=true;
+    },
+    //弹出框关闭提醒
+    handleClose(done) {
+      this.$confirm('确认关闭？')
+        .then(_ => {
+          done();
+        })
+        .catch(_ => {});
+    },
     /** 查询字典-地图列表 */
     getList() {
       this.loading = true;
