@@ -1,6 +1,6 @@
 <template>
   <div class="hengYes" >
-    <h1 style="font-family: 楷体;font-size: 40px;">若依改良版脚手架</h1>
+    <h1 style="font-family: 楷体;font-size: 40px;">建行一世改良版脚手架</h1>
   </div>
 </template>
 <script>
