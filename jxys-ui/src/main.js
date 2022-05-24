@@ -40,6 +40,12 @@ import DictData from '@/components/DictData'
 //汉字转拼音
 import { pinyin } from 'pinyin-pro';
 let pinyinItem = require('js-pinyin');
+// json解析文件
+import { VueJsonp } from 'vue-jsonp'
+Vue.use(VueJsonp)
+
+
+
 
 // 全局方法挂载
 Vue.prototype.pinyin = pinyin  //拼音转换--pinyin-pro
