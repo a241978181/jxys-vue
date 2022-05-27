@@ -2,6 +2,7 @@ package com.jxys.common.utils;
 
 import java.util.Collection;
 import java.util.List;
+import com.alibaba.fastjson2.JSONArray;
 import com.jxys.common.constant.Constants;
 import com.jxys.common.core.domain.entity.SysDictData;
 import com.jxys.common.core.redis.RedisCache;
@@ -32,16 +33,16 @@ public class DictUtils
 
     /**
      * 获取字典缓存
-     * 
+     *
      * @param key 参数键
      * @return dictDatas 字典数据列表
      */
     public static List<SysDictData> getDictCache(String key)
     {
-        Object cacheObj = SpringUtils.getBean(RedisCache.class).getCacheObject(getCacheKey(key));
-        if (StringUtils.isNotNull(cacheObj))
+        JSONArray arrayCache = SpringUtils.getBean(RedisCache.class).getCacheObject(getCacheKey(key));
+        if (StringUtils.isNotNull(arrayCache))
         {
-            return StringUtils.cast(cacheObj);
+            return arrayCache.toList(SysDictData.class);
         }
         return null;
     }
@@ -72,7 +73,7 @@ public class DictUtils
 
     /**
      * 根据字典类型和字典值获取字典标签
-     * 
+     *
      * @param dictType 字典类型
      * @param dictValue 字典值
      * @param separator 分隔符
@@ -83,27 +84,30 @@ public class DictUtils
         StringBuilder propertyString = new StringBuilder();
         List<SysDictData> datas = getDictCache(dictType);
 
-        if (StringUtils.containsAny(separator, dictValue) && StringUtils.isNotEmpty(datas))
+        if (StringUtils.isNotNull(datas))
         {
-            for (SysDictData dict : datas)
+            if (StringUtils.containsAny(separator, dictValue))
             {
-                for (String value : dictValue.split(separator))
+                for (SysDictData dict : datas)
                 {
-                    if (value.equals(dict.getDictValue()))
+                    for (String value : dictValue.split(separator))
                     {
-                        propertyString.append(dict.getDictLabel()).append(separator);
-                        break;
+                        if (value.equals(dict.getDictValue()))
+                        {
+                            propertyString.append(dict.getDictLabel()).append(separator);
+                            break;
+                        }
                     }
                 }
             }
-        }
-        else
-        {
-            for (SysDictData dict : datas)
+            else
             {
-                if (dictValue.equals(dict.getDictValue()))
+                for (SysDictData dict : datas)
                 {
-                    return dict.getDictLabel();
+                    if (dictValue.equals(dict.getDictValue()))
+                    {
+                        return dict.getDictLabel();
+                    }
                 }
             }
         }
