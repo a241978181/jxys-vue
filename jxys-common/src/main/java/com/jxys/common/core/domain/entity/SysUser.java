@@ -5,8 +5,6 @@ import java.util.List;
 import javax.validation.constraints.*;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jxys.common.annotation.Excel;
 import com.jxys.common.annotation.Excel.ColumnType;
 import com.jxys.common.annotation.Excel.Type;
@@ -202,8 +200,6 @@ public class SysUser extends BaseEntity
         this.avatar = avatar;
     }
 
-    @JsonIgnore
-    @JsonProperty
     public String getPassword()
     {
         return password;
