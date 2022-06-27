@@ -1,6 +1,7 @@
 package com.jxys.system.service.impl;
 
 import com.jxys.common.annotation.DataSource;
+import com.jxys.common.constant.CacheConstants;
 import com.jxys.common.constant.Constants;
 import com.jxys.common.constant.UserConstants;
 import com.jxys.common.core.redis.RedisCache;
@@ -181,7 +182,7 @@ public class SysConfigServiceImpl implements ISysConfigService
     @Override
     public void clearConfigCache()
     {
-        Collection<String> keys = redisCache.keys(Constants.SYS_CONFIG_KEY + "*");
+        Collection<String> keys = redisCache.keys(CacheConstants.SYS_CONFIG_KEY + "*");
         redisCache.deleteObject(keys);
     }
 
@@ -221,6 +222,6 @@ public class SysConfigServiceImpl implements ISysConfigService
      */
     private String getCacheKey(String configKey)
     {
-        return Constants.SYS_CONFIG_KEY + configKey;
+        return CacheConstants.SYS_CONFIG_KEY + configKey;
     }
 }

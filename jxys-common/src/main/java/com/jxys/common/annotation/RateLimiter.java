@@ -5,6 +5,8 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
+import com.jxys.common.constant.CacheConstants;
 import com.jxys.common.constant.Constants;
 import com.jxys.common.enums.LimitType;
 
@@ -21,7 +23,7 @@ public @interface RateLimiter
     /**
      * 限流key
      */
-    public String key() default Constants.RATE_LIMIT_KEY;
+    public String key() default CacheConstants.RATE_LIMIT_KEY;
 
     /**
      * 限流时间,单位秒

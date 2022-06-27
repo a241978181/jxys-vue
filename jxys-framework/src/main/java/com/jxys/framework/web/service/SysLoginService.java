@@ -1,6 +1,8 @@
 package com.jxys.framework.web.service;
 
 import javax.annotation.Resource;
+
+import com.jxys.common.constant.CacheConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -120,7 +122,7 @@ public class SysLoginService
      */
     public void validateCaptcha(String username, String code, String uuid)
     {
-        String verifyKey = Constants.CAPTCHA_CODE_KEY + StringUtils.nvl(uuid, "");
+        String verifyKey = CacheConstants.CAPTCHA_CODE_KEY + StringUtils.nvl(uuid, "");
         String captcha = redisCache.getCacheObject(verifyKey);
         redisCache.deleteObject(verifyKey);
         if (captcha == null)
