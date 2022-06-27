@@ -1,7 +1,6 @@
 package com.jxys.system.mapper;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Mapper;
 import com.jxys.common.core.domain.entity.SysDictType;
 
 /**
@@ -9,7 +8,6 @@ import com.jxys.common.core.domain.entity.SysDictType;
  * 
  * @author jxys
  */
-@Mapper
 public interface SysDictTypeMapper
 {
     /**
