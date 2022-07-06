@@ -11,6 +11,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.jxys.common.enums.HttpMethod;
 import com.jxys.common.utils.StringUtils;
 
 /**
@@ -59,7 +61,7 @@ public class XssFilter implements Filter
         String url = request.getServletPath();
         String method = request.getMethod();
         // GET DELETE 不过滤
-        if (method == null || method.matches("GET") || method.matches("DELETE"))
+        if (method == null || HttpMethod.GET.matches(method) || HttpMethod.DELETE.matches(method))
         {
             return true;
         }
