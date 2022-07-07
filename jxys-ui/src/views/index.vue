@@ -4,13 +4,21 @@
   </div>
 </template>
 <script>
+
 export default {
   name: "Index",
   components: {
   },
   data() {
+    return{
+    }
   },
   mounted() {
+  },
+  /**
+   * 离开当前页面
+   * */
+  destroyed() {
   },
   methods: {
   },
