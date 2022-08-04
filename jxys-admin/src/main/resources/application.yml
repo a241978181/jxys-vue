@@ -1,24 +1,7 @@
-# 项目相关配置
-jxys:
-  # 名称
-  name: 建行一世管理系统
-  # 版本
-  version: 3.8.3
-  # 版权年份
-  copyrightYear: 2022
-  # 实例演示开关
-  demoEnabled: true
-  # 文件路径 示例（ Windows配置D:/jxys/uploadPath，Linux配置 /home/jxys/uploadPath）
-  profile: D:/jxys/uploadPath
-  # 获取ip地址开关
-  addressEnabled: true
-  # 验证码类型 math 数组计算 char 字符验证
-  captchaType: math
-
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为8080
-  port: 8080
+  port: 2190
   servlet:
     # 应用的访问路径
     context-path: /
@@ -54,7 +37,7 @@ spring:
     # 国际化资源文件路径
     basename: i18n/messages
   profiles: 
-    active: druid
+    active: pro
   # 文件上传
   servlet:
      multipart:
