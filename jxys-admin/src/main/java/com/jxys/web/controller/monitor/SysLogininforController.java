@@ -18,6 +18,7 @@ import com.jxys.common.enums.BusinessType;
 import com.jxys.common.utils.poi.ExcelUtil;
 import com.jxys.system.domain.SysLogininfor;
 import com.jxys.system.service.ISysLogininforService;
+import com.jxys.framework.web.service.SysPasswordService;
 
 /**
  * 系统访问记录
@@ -30,6 +31,9 @@ public class SysLogininforController extends BaseController
 {
     @Autowired
     private ISysLogininforService logininforService;
+
+    @Autowired
+    private SysPasswordService passwordService;
 
     @PreAuthorize("@ss.hasPermi('monitor:logininfor:list')")
     @GetMapping("/list")
@@ -65,5 +69,14 @@ public class SysLogininforController extends BaseController
     {
         logininforService.cleanLogininfor();
         return AjaxResult.success();
+    }
+
+    @PreAuthorize("@ss.hasPermi('monitor:logininfor:unlock')")
+    @Log(title = "账户解锁", businessType = BusinessType.OTHER)
+    @GetMapping("/unlock/{userName}")
+    public AjaxResult unlock(@PathVariable("userName") String userName)
+    {
+        passwordService.clearLoginRecordCache(userName);
+        return success();
     }
 }
