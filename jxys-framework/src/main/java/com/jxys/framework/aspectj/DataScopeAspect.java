@@ -1,24 +1,26 @@
 package com.jxys.framework.aspectj;
 
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.springframework.stereotype.Component;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.jxys.common.annotation.DataScope;
 import com.jxys.common.core.domain.BaseEntity;
 import com.jxys.common.core.domain.entity.SysRole;
 import com.jxys.common.core.domain.entity.SysUser;
 import com.jxys.common.core.domain.model.LoginUser;
-import com.jxys.common.utils.StringUtils;
+import com.jxys.common.core.text.Convert;
 import com.jxys.common.utils.SecurityUtils;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.jxys.common.utils.StringUtils;
+import com.jxys.framework.security.context.PermissionContextHolder;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
 
 /**
  * 数据过滤处理
  *
- * @author jxys
+ * @author ruoyi
  */
 @Aspect
 @Component
@@ -71,8 +73,9 @@ public class DataScopeAspect
             // 如果是超级管理员，则不过滤数据
             if (StringUtils.isNotNull(currentUser) && !currentUser.isAdmin())
             {
+                String permission = StringUtils.defaultIfEmpty(controllerDataScope.permission(), PermissionContextHolder.getContext());
                 dataScopeFilter(joinPoint, currentUser, controllerDataScope.deptAlias(),
-                        controllerDataScope.userAlias());
+                        controllerDataScope.userAlias(), permission);
             }
         }
     }
@@ -82,18 +85,24 @@ public class DataScopeAspect
      *
      * @param joinPoint 切点
      * @param user 用户
-     * @param userAlias 别名
+     * @param deptAlias 部门别名
+     * @param userAlias 用户别名
+     * @param permission 权限字符
      */
-    public static void dataScopeFilter(JoinPoint joinPoint, SysUser user, String deptAlias, String userAlias)
+    public static void dataScopeFilter(JoinPoint joinPoint, SysUser user, String deptAlias, String userAlias, String permission)
     {
         StringBuilder sqlString = new StringBuilder();
-        List<String> conditions = new ArrayList<>();
+        List<String> conditions = new ArrayList<String>();
 
         for (SysRole role : user.getRoles())
         {
             String dataScope = role.getDataScope();
-            if (conditions.contains(dataScope))
+            if (!DATA_SCOPE_CUSTOM.equals(dataScope) && conditions.contains(dataScope))
             {
+                continue;
+            }
+            if (StringUtils.isNotEmpty(permission) && StringUtils.isNotEmpty(role.getPermissions())
+                    && !StringUtils.containsAny(role.getPermissions(), Convert.toStrArray(permission))){
                 continue;
             }
             if (DATA_SCOPE_ALL.equals(dataScope))

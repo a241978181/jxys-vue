@@ -28,6 +28,15 @@ public interface ISysDeptService
     public List<SysDept> buildDeptTree(List<SysDept> depts);
 
     /**
+     * 查询部门树结构信息
+     *
+     * @param dept 部门信息
+     * @return 部门树信息集合
+     */
+    public List<TreeSelect> selectDeptTreeList(SysDept dept);
+
+
+    /**
      * 构建前端所需要下拉树结构
      * 
      * @param depts 部门列表

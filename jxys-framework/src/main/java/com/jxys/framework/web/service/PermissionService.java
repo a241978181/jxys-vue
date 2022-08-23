@@ -1,6 +1,8 @@
 package com.jxys.framework.web.service;
 
 import java.util.Set;
+
+import com.jxys.framework.security.context.PermissionContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import com.jxys.common.core.domain.entity.SysRole;
@@ -43,6 +45,8 @@ public class PermissionService
         {
             return false;
         }
+
+        PermissionContextHolder.setContext(permission);
         return hasPermissions(loginUser.getPermissions(), permission);
     }
 
@@ -74,6 +78,7 @@ public class PermissionService
         {
             return false;
         }
+        PermissionContextHolder.setContext(permissions);
         Set<String> authorities = loginUser.getPermissions();
         for (String permission : permissions.split(PERMISSION_DELIMETER))
         {

@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.jxys.common.filter.PropertyPreExcludeFilter;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -37,6 +39,9 @@ import com.jxys.system.domain.SysOperLog;
 public class LogAspect
 {
     private static final Logger log = LoggerFactory.getLogger(LogAspect.class);
+
+    /** 排除敏感属性字段 */
+    public static final String[] EXCLUDE_PROPERTIES = { "password", "oldPassword", "newPassword", "confirmPassword" };
 
     /**
      * 处理完请求后执行
@@ -168,7 +173,7 @@ public class LogAspect
                 {
                     try
                     {
-                        Object jsonObj = JSON.toJSON(o);
+                        String jsonObj = JSON.toJSONString(o, excludePropertyPreFilter());
                         params += jsonObj.toString() + " ";
                     }
                     catch (Exception e)
@@ -178,6 +183,14 @@ public class LogAspect
             }
         }
         return params.trim();
+    }
+
+    /**
+     * 忽略敏感属性
+     */
+    public PropertyPreExcludeFilter excludePropertyPreFilter()
+    {
+        return new PropertyPreExcludeFilter().addExcludes(EXCLUDE_PROPERTIES);
     }
 
     /**
