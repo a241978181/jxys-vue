@@ -37,7 +37,11 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.4.2</version>
+        </dependency>
+        <!--mybatis-plus-join链表查询-->
+        <dependency>
+            <groupId>com.github.yulichang</groupId>
+            <artifactId>mybatis-plus-join</artifactId>
         </dependency>
 
         <!-- spring security 安全认证 -->
