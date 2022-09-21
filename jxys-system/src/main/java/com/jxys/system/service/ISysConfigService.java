@@ -86,4 +86,11 @@ public interface ISysConfigService
      * @return 结果
      */
     public String checkConfigKeyUnique(SysConfig config);
+
+    /**
+     * 获取验证码开关
+     *
+     * @return true开启，false关闭
+     */
+    public boolean selectCaptchaEnabled();
 }

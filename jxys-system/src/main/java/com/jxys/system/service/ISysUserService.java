@@ -72,7 +72,7 @@ public interface ISysUserService
      * @param userName 用户名称
      * @return 结果
      */
-    public String checkUserNameUnique(String userName);
+    public String checkUserNameUnique(SysUser user);
 
     /**
      * 校验手机号码是否唯一
