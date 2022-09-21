@@ -2,11 +2,16 @@
   <div>
     <el-badge :is-dot="isDot" style="position: relative;top: -7px;right: -22px;"></el-badge>
     <el-popover placement="bottom-start" trigger="click" width="400">
-      <el-table :cell-style="{cursor:'pointer'}" :data="messageList" max-height="300px"
-                @row-click="onClickNotification">
-        <el-table-column label="标题" property="title" width="100"></el-table-column>
-        <el-table-column label="内容" property="message" show-overflow-tooltip></el-table-column>
-      </el-table>
+      <div style="width: 100%;display: flex;align-items: center;flex-direction: column;">
+        <el-table :cell-style="{cursor:'pointer'}" :data="messageList" max-height="300px"
+                  @row-click="onClickNotification">
+          <el-table-column label="标题" property="title" width="100"></el-table-column>
+          <el-table-column label="内容" property="message" show-overflow-tooltip></el-table-column>
+        </el-table>
+        <div style="width: 100%;display: flex;align-items: center;justify-content: flex-end;margin-top: 5px;">
+          <el-button type="text" @click="messageList=[]">清空全部</el-button>
+        </div>
+      </div>
       <svg-icon slot="reference" icon-class="message" style="height: 100%;" @click="clickOn"/>
     </el-popover>
   </div>
