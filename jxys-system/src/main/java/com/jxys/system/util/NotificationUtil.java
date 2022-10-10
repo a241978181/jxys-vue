@@ -1,12 +1,17 @@
-package com.jxys.common.utils;
+package com.jxys.system.util;
 
+import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson2.JSON;
+import com.jxys.common.constant.Constants;
 import com.jxys.common.core.redis.RedisCache;
 import com.jxys.common.dto.NotificationItem;
+import com.jxys.common.utils.StringUtils;
+import com.jxys.system.service.SysNotificationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.util.ArrayList;
@@ -36,6 +41,21 @@ public class NotificationUtil {
     @Autowired
     private RedisCache redisCache;
 
+    private static NotificationUtil notificationUtil;
+    private SysNotificationService sysNotificationService;
+
+    @PostConstruct
+    public void init() {
+        notificationUtil = this;
+        // 初使化时将已静态化的configParam实例化
+        notificationUtil.sysNotificationService = this.sysNotificationService;
+    }
+
+    @Autowired
+    public void setSysNotificationService(SysNotificationService sysNotificationService) {
+        this.sysNotificationService = sysNotificationService;
+    }
+
     /**
      * 连接建立成功调用的方法
      */
@@ -50,6 +70,8 @@ public class NotificationUtil {
         sessionMap.put(session.getId(), session);
         clients.put(userName, sessionMap);
         log.info("有新连接加入：{}，当前在线人数为：{}", session.getId(), onlineCount.get());
+        //调用方法查询是否存在未发送的通知消息
+        notificationUtil.sysNotificationService.restartSend(userName);
     }
 
     /**
@@ -87,7 +109,12 @@ public class NotificationUtil {
         log.info("服务端收到客户端[{}]的消息:{}用户为：{}", session.getId(), message, userName);
         //userName为用户账号
         //message为已读内容id
-        //后面可以自行设计逻辑修改数据已读标识
+        //判断已读信息
+        if (Constants.NOTIFICATION_STATUS_ALL.equals(message)) {
+            notificationUtil.sysNotificationService.read(null, userName);
+        } else {
+            notificationUtil.sysNotificationService.read(Long.parseLong(message), userName);
+        }
     }
 
 
@@ -96,19 +123,18 @@ public class NotificationUtil {
      *
      * @param notificationItem 消息组件
      * @param userName         用户账号
-     * @return 未成功发送的用户账号
+     * @return 成功发送的用户账号
      */
     public String sendMessageOne(NotificationItem notificationItem, String userName) {
         Map<String, Session> sessionMap = clients.get(userName);
         if (sessionMap != null) {
             for (Session value : sessionMap.values()) {
-                System.out.println(value);
                 log.info("服务端给客户端[{}]发送消息{}发送级别{}", value.getId(), notificationItem.getMessage(), notificationItem.getLevel());
-                value.getAsyncRemote().sendText(JSON.toJSONString(notificationItem));
+                value.getAsyncRemote().sendText(JSONUtil.toJsonStr(notificationItem));
             }
-            return null;
-        } else {
             return userName;
+        } else {
+            return null;
         }
     }
 
@@ -117,20 +143,20 @@ public class NotificationUtil {
      *
      * @param notificationItem 消息对象
      * @param userList         用户账号组
-     * @return 未成功发送的用户账号组
+     * @return 成功发送的用户账号组
      */
     public List<String> sendMessageList(NotificationItem notificationItem, List<String> userList) {
-        List<String> errorList = new ArrayList<>();
+        List<String> successList = new ArrayList<>();
         if (userList != null && userList.size() > 0) {
             for (String userName : userList) {
                 String u = this.sendMessageOne(notificationItem, userName);
                 if (StringUtils.isNotBlank(u)) {
-                    errorList.add(u);
+                    successList.add(u);
                 }
             }
-            return errorList;
+            return successList;
         } else {
-            return errorList;
+            return successList;
         }
 
     }

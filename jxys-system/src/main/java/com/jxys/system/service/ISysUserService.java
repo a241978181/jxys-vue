@@ -19,6 +19,13 @@ public interface ISysUserService
     public List<SysUser> selectUserList(SysUser user);
 
     /**
+     * 获取全部用户（只查询关键字段）
+     *
+     * @return 用户信息集合信息
+     */
+    public List<SysUser> selectUserListAll();
+
+    /**
      * 根据条件分页查询已分配用户角色列表
      * 
      * @param user 用户信息
@@ -203,4 +210,6 @@ public interface ISysUserService
      * @return 结果
      */
     public String importUser(List<SysUser> userList, Boolean isUpdateSupport, String operName);
+
+
 }

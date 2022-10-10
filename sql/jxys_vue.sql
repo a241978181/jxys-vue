@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 个人-北京-mysql-外网连接
+ Source Server         : 个人-北京云服务器-内部MySQL-外网链接
  Source Server Type    : MySQL
- Source Server Version : 50718
- Source Host           : bj-cdb-4s22dq3y.sql.tencentcdb.com:60585
+ Source Server Version : 50736
+ Source Host           : 81.70.231.37:3306
  Source Schema         : jxys_vue
 
  Target Server Type    : MySQL
- Target Server Version : 50718
+ Target Server Version : 50736
  File Encoding         : 65001
 
- Date: 24/05/2022 15:37:56
+ Date: 10/10/2022 09:41:01
 */
 
 SET NAMES utf8mb4;
@@ -274,11 +274,12 @@ CREATE TABLE `gen_table`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`table_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of gen_table
 -- ----------------------------
+INSERT INTO `gen_table` VALUES (1, 'zd_map', '字典-地图', NULL, NULL, 'ZdMap', 'crud', 'com.jxys.system', 'system', 'map', '字典-地图', 'jxys', '0', '/', NULL, 'admin', '2022-08-09 02:24:23', '', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for gen_table_column
@@ -308,11 +309,30 @@ CREATE TABLE `gen_table_column`  (
   `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`column_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 65 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of gen_table_column
 -- ----------------------------
+INSERT INTO `gen_table_column` VALUES (1, '1', 'id', '主键', 'bigint(20)', 'Long', 'id', '1', '1', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (2, '1', 'create_by', '创建者', 'varchar(64)', 'String', 'createBy', '0', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 2, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (3, '1', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', NULL, '1', NULL, '1', NULL, 'EQ', 'datetime', '', 3, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (4, '1', 'update_by', '更新者', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 4, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (5, '1', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '1', NULL, '1', NULL, 'EQ', 'datetime', '', 5, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (6, '1', 'deleted', '逻辑删除', 'int(2)', 'Integer', 'deleted', '0', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 6, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (7, '1', 'jb', '级别:0：国家级 1：省级 2：市级 3：区级', 'varchar(3)', 'String', 'jb', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 7, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (8, '1', 'mc', '名称', 'varchar(40)', 'String', 'mc', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 8, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (9, '1', 'mc_yw', '名称-英文', 'varchar(80)', 'String', 'mcYw', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 9, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (10, '1', 'color', '所属颜色', 'varchar(40)', 'String', 'color', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 10, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (11, '1', 'adcode', '行政区划代码', 'int(11)', 'Long', 'adcode', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 11, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (12, '1', 'zoom', '缩放级别', 'double(4,2)', 'BigDecimal', 'zoom', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 12, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (13, '1', 'zxd_x', '中心点x', 'double(20,10)', 'BigDecimal', 'zxdX', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 13, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (14, '1', 'zxd_y', '中心点y', 'double(20,10)', 'BigDecimal', 'zxdY', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 14, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (15, '1', 'qc', '全称', 'varchar(200)', 'String', 'qc', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 15, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (16, '1', 'jc', '简称', 'varchar(50)', 'String', 'jc', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 16, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (17, '1', 'yb', '邮编', 'varchar(50)', 'String', 'yb', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 17, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (18, '1', 'ctqh', '长途区号', 'varchar(50)', 'String', 'ctqh', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 18, 'admin', '2022-08-09 02:24:23', '', NULL);
+INSERT INTO `gen_table_column` VALUES (19, '1', 'pid', '父id', 'bigint(20)', 'Long', 'pid', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 19, 'admin', '2022-08-09 02:24:23', '', NULL);
 
 -- ----------------------------
 -- Table structure for sys_config
@@ -330,7 +350,7 @@ CREATE TABLE `sys_config`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '参数配置表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '参数配置表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_config
@@ -338,8 +358,8 @@ CREATE TABLE `sys_config`  (
 INSERT INTO `sys_config` VALUES (1, '主框架页-默认皮肤样式名称', 'sys.index.skinName', 'skin-blue', 'Y', 'admin', '2022-05-06 09:33:01', '', NULL, '蓝色 skin-blue、绿色 skin-green、紫色 skin-purple、红色 skin-red、黄色 skin-yellow');
 INSERT INTO `sys_config` VALUES (2, '用户管理-账号初始密码', 'sys.user.initPassword', '123456', 'Y', 'admin', '2022-05-06 09:33:01', '', NULL, '初始化密码 123456');
 INSERT INTO `sys_config` VALUES (3, '主框架页-侧边栏主题', 'sys.index.sideTheme', 'theme-dark', 'Y', 'admin', '2022-05-06 09:33:01', '', NULL, '深色主题theme-dark，浅色主题theme-light');
-INSERT INTO `sys_config` VALUES (4, '账号自助-验证码开关', 'sys.account.captchaEnabled', 'true', 'Y', 'admin', '2022-05-06 09:33:01', 'admin', '2022-05-17 16:55:26', '是否开启验证码功能（true开启，false关闭）');
-INSERT INTO `sys_config` VALUES (5, '账号自助-是否开启用户注册功能', 'sys.account.registerUser', 'false', 'N', 'admin', '2022-05-06 09:33:01', 'admin', '2022-05-17 16:57:47', '是否开启注册用户功能（true开启，false关闭）');
+INSERT INTO `sys_config` VALUES (4, '账号自助-验证码开关', 'sys.account.captchaEnabled', 'false', 'Y', 'admin', '2022-05-06 09:33:01', 'admin', '2022-09-21 02:55:08', '是否开启验证码功能（true开启，false关闭）');
+INSERT INTO `sys_config` VALUES (5, '账号自助-是否开启用户注册功能', 'sys.account.registerUser', 'true', 'Y', 'admin', '2022-05-06 09:33:01', 'admin', '2022-07-11 14:19:34', '是否开启注册用户功能（true开启，false关闭）');
 
 -- ----------------------------
 -- Table structure for sys_dept
@@ -391,7 +411,7 @@ CREATE TABLE `sys_dict_data`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dict_data
@@ -424,6 +444,14 @@ INSERT INTO `sys_dict_data` VALUES (25, 8, '生成代码', '8', 'sys_oper_type',
 INSERT INTO `sys_dict_data` VALUES (26, 9, '清空数据', '9', 'sys_oper_type', '', 'danger', 'N', '0', 'admin', '2022-05-06 09:33:00', '', NULL, '清空操作');
 INSERT INTO `sys_dict_data` VALUES (27, 1, '成功', '0', 'sys_common_status', '', 'primary', 'N', '0', 'admin', '2022-05-06 09:33:01', '', NULL, '正常状态');
 INSERT INTO `sys_dict_data` VALUES (28, 2, '失败', '1', 'sys_common_status', '', 'danger', 'N', '0', 'admin', '2022-05-06 09:33:01', '', NULL, '停用状态');
+INSERT INTO `sys_dict_data` VALUES (29, 99, '其他', '99', 'sys_oper_type', NULL, 'info', 'N', '0', 'admin', '2022-08-23 08:21:11', '', NULL, '其他操作');
+INSERT INTO `sys_dict_data` VALUES (30, 0, '初级', '1', 'sys_notification_level', NULL, 'default', 'N', '0', 'admin', '2022-10-09 10:46:14', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (31, 2, '中级', '2', 'sys_notification_level', NULL, 'default', 'N', '0', 'admin', '2022-10-09 10:46:24', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (32, 3, '高级', '3', 'sys_notification_level', NULL, 'default', 'N', '0', 'admin', '2022-10-09 10:46:34', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (33, 0, '未读', '0', 'sys_notification_read', NULL, 'warning', 'N', '0', 'admin', '2022-10-09 15:44:23', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (34, 1, '已读', '1', 'sys_notification_read', NULL, 'success', 'N', '0', 'admin', '2022-10-09 15:44:31', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (35, 0, '未发送', '0', 'sys_notification_send', NULL, 'warning', 'N', '0', 'admin', '2022-10-09 15:44:43', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (36, 1, '已发送', '1', 'sys_notification_send', NULL, 'success', 'N', '0', 'admin', '2022-10-09 15:44:51', '', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_dict_type
@@ -441,7 +469,7 @@ CREATE TABLE `sys_dict_type`  (
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_id`) USING BTREE,
   UNIQUE INDEX `dict_type`(`dict_type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dict_type
@@ -456,6 +484,9 @@ INSERT INTO `sys_dict_type` VALUES (7, '通知类型', 'sys_notice_type', '0', '
 INSERT INTO `sys_dict_type` VALUES (8, '通知状态', 'sys_notice_status', '0', 'admin', '2022-05-06 09:33:00', '', NULL, '通知状态列表');
 INSERT INTO `sys_dict_type` VALUES (9, '操作类型', 'sys_oper_type', '0', 'admin', '2022-05-06 09:33:00', '', NULL, '操作类型列表');
 INSERT INTO `sys_dict_type` VALUES (10, '系统状态', 'sys_common_status', '0', 'admin', '2022-05-06 09:33:00', '', NULL, '登录状态列表');
+INSERT INTO `sys_dict_type` VALUES (25, '通知-级别', 'sys_notification_level', '0', 'admin', '2022-10-09 10:44:47', 'admin', '2022-10-09 15:42:44', NULL);
+INSERT INTO `sys_dict_type` VALUES (26, '通知-已读', 'sys_notification_read', '0', 'admin', '2022-10-09 15:43:11', 'admin', '2022-10-09 15:43:21', NULL);
+INSERT INTO `sys_dict_type` VALUES (27, '通知-发送', 'sys_notification_send', '0', 'admin', '2022-10-09 15:43:51', '', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_job
@@ -476,7 +507,7 @@ CREATE TABLE `sys_job`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '备注信息',
   PRIMARY KEY (`job_id`, `job_name`, `job_group`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '定时任务调度表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '定时任务调度表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_job
@@ -520,11 +551,86 @@ CREATE TABLE `sys_logininfor`  (
   `msg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '提示消息',
   `login_time` datetime(0) NULL DEFAULT NULL COMMENT '访问时间',
   PRIMARY KEY (`info_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_logininfor
 -- ----------------------------
+INSERT INTO `sys_logininfor` VALUES (1, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-05-27 10:16:31');
+INSERT INTO `sys_logininfor` VALUES (2, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-05-27 10:28:21');
+INSERT INTO `sys_logininfor` VALUES (3, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-06-01 10:50:08');
+INSERT INTO `sys_logininfor` VALUES (4, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-06-01 11:24:43');
+INSERT INTO `sys_logininfor` VALUES (5, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-06-14 10:59:05');
+INSERT INTO `sys_logininfor` VALUES (6, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-06-22 10:13:51');
+INSERT INTO `sys_logininfor` VALUES (7, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-06-27 08:54:10');
+INSERT INTO `sys_logininfor` VALUES (8, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-06-27 09:26:48');
+INSERT INTO `sys_logininfor` VALUES (9, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-06-27 14:37:33');
+INSERT INTO `sys_logininfor` VALUES (10, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-07-06 16:05:53');
+INSERT INTO `sys_logininfor` VALUES (11, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '验证码错误', '2022-07-06 17:05:25');
+INSERT INTO `sys_logininfor` VALUES (12, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-07-06 17:05:28');
+INSERT INTO `sys_logininfor` VALUES (13, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-07-07 14:13:34');
+INSERT INTO `sys_logininfor` VALUES (14, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-07-11 13:40:25');
+INSERT INTO `sys_logininfor` VALUES (15, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '退出成功', '2022-07-11 14:00:24');
+INSERT INTO `sys_logininfor` VALUES (16, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-07-11 14:01:17');
+INSERT INTO `sys_logininfor` VALUES (17, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '退出成功', '2022-07-11 14:14:58');
+INSERT INTO `sys_logininfor` VALUES (18, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-07-11 14:19:11');
+INSERT INTO `sys_logininfor` VALUES (19, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '退出成功', '2022-07-11 14:19:39');
+INSERT INTO `sys_logininfor` VALUES (20, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-07-11 14:22:56');
+INSERT INTO `sys_logininfor` VALUES (21, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-02 14:27:44');
+INSERT INTO `sys_logininfor` VALUES (22, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '退出成功', '2022-08-02 14:54:37');
+INSERT INTO `sys_logininfor` VALUES (23, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 14:54:44');
+INSERT INTO `sys_logininfor` VALUES (24, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '验证码错误', '2022-08-02 14:54:49');
+INSERT INTO `sys_logininfor` VALUES (25, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 14:54:53');
+INSERT INTO `sys_logininfor` VALUES (26, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 14:54:57');
+INSERT INTO `sys_logininfor` VALUES (27, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 14:55:01');
+INSERT INTO `sys_logininfor` VALUES (28, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 14:55:04');
+INSERT INTO `sys_logininfor` VALUES (29, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 14:55:29');
+INSERT INTO `sys_logininfor` VALUES (30, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 14:55:36');
+INSERT INTO `sys_logininfor` VALUES (31, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 14:57:47');
+INSERT INTO `sys_logininfor` VALUES (32, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 15:12:20');
+INSERT INTO `sys_logininfor` VALUES (33, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 15:12:24');
+INSERT INTO `sys_logininfor` VALUES (34, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 15:12:28');
+INSERT INTO `sys_logininfor` VALUES (35, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 15:12:32');
+INSERT INTO `sys_logininfor` VALUES (36, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 15:12:35');
+INSERT INTO `sys_logininfor` VALUES (37, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '用户不存在/密码错误', '2022-08-02 15:12:38');
+INSERT INTO `sys_logininfor` VALUES (38, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '密码输入错误5次，帐户锁定10分钟', '2022-08-02 15:15:20');
+INSERT INTO `sys_logininfor` VALUES (39, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '密码输入错误5次，帐户锁定10分钟', '2022-08-02 15:15:20');
+INSERT INTO `sys_logininfor` VALUES (40, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '密码输入错误5次，帐户锁定10分钟', '2022-08-02 15:15:28');
+INSERT INTO `sys_logininfor` VALUES (41, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '密码输入错误5次，帐户锁定10分钟', '2022-08-02 15:15:28');
+INSERT INTO `sys_logininfor` VALUES (42, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-02 16:27:30');
+INSERT INTO `sys_logininfor` VALUES (43, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-03 03:23:20');
+INSERT INTO `sys_logininfor` VALUES (44, 'admin', '110.249.131.78', '河北省 石家庄市', 'Chrome 10', 'Windows 10', '1', '验证码已失效', '2022-08-03 06:55:48');
+INSERT INTO `sys_logininfor` VALUES (45, 'admin', '110.249.131.78', '河北省 石家庄市', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-03 06:55:53');
+INSERT INTO `sys_logininfor` VALUES (46, 'admin', '110.249.131.78', '河北省 石家庄市', 'Chrome 10', 'Windows 10', '0', '退出成功', '2022-08-03 07:03:07');
+INSERT INTO `sys_logininfor` VALUES (47, 'admin', '110.249.131.78', '河北省 石家庄市', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-03 07:03:12');
+INSERT INTO `sys_logininfor` VALUES (48, 'admin', '110.249.131.78', '河北省 石家庄市', 'Chrome 10', 'Windows 10', '0', '退出成功', '2022-08-03 07:36:39');
+INSERT INTO `sys_logininfor` VALUES (49, 'admin', '110.249.131.78', '河北省 石家庄市', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-03 07:36:47');
+INSERT INTO `sys_logininfor` VALUES (50, 'admin', '110.249.131.78', '河北省 石家庄市', 'Chrome 10', 'Windows 10', '0', '退出成功', '2022-08-03 07:42:32');
+INSERT INTO `sys_logininfor` VALUES (51, 'admin', '110.249.131.78', '河北省 石家庄市', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-03 07:42:45');
+INSERT INTO `sys_logininfor` VALUES (52, 'admin', '110.249.131.78', '河北省 石家庄市', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-04 09:15:02');
+INSERT INTO `sys_logininfor` VALUES (53, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-09 01:08:03');
+INSERT INTO `sys_logininfor` VALUES (54, 'admin', '110.249.131.78', '河北省 石家庄市', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-09 01:15:18');
+INSERT INTO `sys_logininfor` VALUES (55, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-09 01:16:10');
+INSERT INTO `sys_logininfor` VALUES (56, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '1', '验证码错误', '2022-08-09 02:22:22');
+INSERT INTO `sys_logininfor` VALUES (57, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-09 02:22:28');
+INSERT INTO `sys_logininfor` VALUES (58, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-09 03:08:47');
+INSERT INTO `sys_logininfor` VALUES (59, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-09 03:59:01');
+INSERT INTO `sys_logininfor` VALUES (60, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-09 04:43:47');
+INSERT INTO `sys_logininfor` VALUES (61, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Mac OS X', '0', '登录成功', '2022-08-09 05:18:14');
+INSERT INTO `sys_logininfor` VALUES (62, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-23 08:18:54');
+INSERT INTO `sys_logininfor` VALUES (63, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-24 01:50:21');
+INSERT INTO `sys_logininfor` VALUES (64, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-24 01:54:42');
+INSERT INTO `sys_logininfor` VALUES (65, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-08-24 01:56:18');
+INSERT INTO `sys_logininfor` VALUES (66, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-09-10 03:28:48');
+INSERT INTO `sys_logininfor` VALUES (67, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-09-21 02:54:17');
+INSERT INTO `sys_logininfor` VALUES (68, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '退出成功', '2022-09-21 02:54:56');
+INSERT INTO `sys_logininfor` VALUES (69, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-09-21 02:55:00');
+INSERT INTO `sys_logininfor` VALUES (70, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '退出成功', '2022-09-21 02:55:11');
+INSERT INTO `sys_logininfor` VALUES (71, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-09-21 02:55:13');
+INSERT INTO `sys_logininfor` VALUES (72, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-10-10 00:50:18');
+INSERT INTO `sys_logininfor` VALUES (73, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-10-10 01:32:58');
+INSERT INTO `sys_logininfor` VALUES (74, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '退出成功', '2022-10-10 01:36:54');
+INSERT INTO `sys_logininfor` VALUES (75, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-10-10 01:36:55');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -551,7 +657,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2018 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2079 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -566,7 +672,7 @@ INSERT INTO `sys_menu` VALUES (103, '部门管理', 1, 4, 'dept', 'system/dept/i
 INSERT INTO `sys_menu` VALUES (104, '岗位管理', 1, 5, 'post', 'system/post/index', '', 1, 0, 'C', '0', '0', 'system:post:list', 'post', 'admin', '2022-05-06 09:32:57', '', NULL, '岗位管理菜单');
 INSERT INTO `sys_menu` VALUES (105, '字典管理', 1, 6, 'dict', 'system/dict/index', '', 1, 0, 'C', '0', '0', 'system:dict:list', 'dict', 'admin', '2022-05-06 09:32:57', '', NULL, '字典管理菜单');
 INSERT INTO `sys_menu` VALUES (106, '参数设置', 1, 7, 'config', 'system/config/index', '', 1, 0, 'C', '0', '0', 'system:config:list', 'edit', 'admin', '2022-05-06 09:32:57', '', NULL, '参数设置菜单');
-INSERT INTO `sys_menu` VALUES (107, '通知公告', 1, 8, 'notice', 'system/notice/index', '', 1, 0, 'C', '0', '0', 'system:notice:list', 'message', 'admin', '2022-05-06 09:32:57', '', NULL, '通知公告菜单');
+INSERT INTO `sys_menu` VALUES (107, '公告管理', 1, 8, 'notice', 'system/notice/index', '', 1, 0, 'C', '0', '0', 'system:notice:list', 'druid', 'admin', '2022-05-06 09:32:57', 'admin', '2022-10-10 01:35:08', '通知公告菜单');
 INSERT INTO `sys_menu` VALUES (108, '日志管理', 1, 9, 'log', '', '', 1, 0, 'M', '0', '0', '', 'log', 'admin', '2022-05-06 09:32:58', '', NULL, '日志管理菜单');
 INSERT INTO `sys_menu` VALUES (109, '在线用户', 2, 1, 'online', 'monitor/online/index', '', 1, 0, 'C', '0', '0', 'monitor:online:list', 'online', 'admin', '2022-05-06 09:32:58', '', NULL, '在线用户菜单');
 INSERT INTO `sys_menu` VALUES (110, '定时任务', 2, 2, 'job', 'monitor/job/index', '', 1, 0, 'C', '0', '0', 'monitor:job:list', 'job', 'admin', '2022-05-06 09:32:58', '', NULL, '定时任务菜单');
@@ -576,6 +682,7 @@ INSERT INTO `sys_menu` VALUES (113, '缓存监控', 2, 5, 'cache', 'monitor/cach
 INSERT INTO `sys_menu` VALUES (114, '表单构建', 3, 1, 'build', 'tool/build/index', '', 1, 0, 'C', '0', '0', 'tool:build:list', 'build', 'admin', '2022-05-06 09:32:58', '', NULL, '表单构建菜单');
 INSERT INTO `sys_menu` VALUES (115, '代码生成', 3, 2, 'gen', 'tool/gen/index', '', 1, 0, 'C', '0', '0', 'tool:gen:list', 'code', 'admin', '2022-05-06 09:32:58', '', NULL, '代码生成菜单');
 INSERT INTO `sys_menu` VALUES (116, '系统接口', 3, 3, 'swagger', 'tool/swagger/index', '', 1, 0, 'C', '0', '0', 'tool:swagger:list', 'swagger', 'admin', '2022-05-06 09:32:58', '', NULL, '系统接口菜单');
+INSERT INTO `sys_menu` VALUES (117, '缓存列表', 2, 6, 'cacheList', 'monitor/cache/list', '', 1, 0, 'C', '0', '0', 'monitor:cache:list', 'redis-list', 'admin', '2022-06-27 09:23:45', '', NULL, '缓存列表菜单');
 INSERT INTO `sys_menu` VALUES (500, '操作日志', 108, 1, 'operlog', 'monitor/operlog/index', '', 1, 0, 'C', '0', '0', 'monitor:operlog:list', 'form', 'admin', '2022-05-06 09:32:58', '', NULL, '操作日志菜单');
 INSERT INTO `sys_menu` VALUES (501, '登录日志', 108, 2, 'logininfor', 'monitor/logininfor/index', '', 1, 0, 'C', '0', '0', 'monitor:logininfor:list', 'logininfor', 'admin', '2022-05-06 09:32:58', '', NULL, '登录日志菜单');
 INSERT INTO `sys_menu` VALUES (1001, '用户查询', 100, 1, '', '', '', 1, 0, 'F', '0', '0', 'system:user:query', '#', 'admin', '2022-05-06 09:32:58', '', NULL, '');
@@ -640,11 +747,6 @@ INSERT INTO `sys_menu` VALUES (1059, '预览代码', 115, 4, '#', '', '', 1, 0, 
 INSERT INTO `sys_menu` VALUES (1060, '生成代码', 115, 5, '#', '', '', 1, 0, 'F', '0', '0', 'tool:gen:code', '#', 'admin', '2022-05-06 09:32:58', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2000, '测试', 0, 5, 'test', NULL, NULL, 1, 0, 'M', '0', '0', '', 'server', 'admin', '2022-05-06 14:14:48', 'admin', '2022-05-19 16:55:00', '');
 INSERT INTO `sys_menu` VALUES (2001, '测试名称', 2000, 1, 'name', 'test/name/index', NULL, 1, 0, 'C', '0', '0', 'test:name:list', 'date-range', 'admin', '2022-05-06 15:08:11', 'admin', '2022-05-09 11:08:45', '测试名称菜单');
-INSERT INTO `sys_menu` VALUES (2002, '测试名称查询', 2001, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'test:name:query', '#', 'admin', '2022-05-06 15:08:11', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2003, '测试名称新增', 2001, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'test:name:add', '#', 'admin', '2022-05-06 15:08:11', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2004, '测试名称修改', 2001, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'test:name:edit', '#', 'admin', '2022-05-06 15:08:11', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2005, '测试名称删除', 2001, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'test:name:remove', '#', 'admin', '2022-05-06 15:08:11', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2006, '测试名称导出', 2001, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'test:name:export', '#', 'admin', '2022-05-06 15:08:11', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2007, '数据管理', 0, 4, 'data', NULL, NULL, 1, 0, 'M', '0', '0', NULL, 'excel', 'admin', '2022-05-19 16:56:07', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2008, '地区地图', 2007, 1, 'map', 'data/map/index', NULL, 1, 0, 'C', '0', '0', '', 'international', 'admin', '2022-05-19 17:12:26', 'admin', '2022-05-19 17:12:51', '地区地图菜单');
 INSERT INTO `sys_menu` VALUES (2009, '组件工具', 3, 4, 'module', 'tool/module/index', NULL, 1, 0, 'C', '0', '0', NULL, 'cascader', 'admin', '2022-05-24 09:41:58', '', NULL, '');
@@ -656,6 +758,15 @@ INSERT INTO `sys_menu` VALUES (2014, 'icon图标新增', 2012, 2, '#', '', NULL,
 INSERT INTO `sys_menu` VALUES (2015, 'icon图标修改', 2012, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'data:icon:edit', '#', 'admin', '2022-05-24 11:15:19', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2016, 'icon图标删除', 2012, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'data:icon:remove', '#', 'admin', '2022-05-24 11:15:19', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2017, 'icon图标导出', 2012, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'data:icon:export', '#', 'admin', '2022-05-24 11:15:19', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2018, 'WebSocket', 3, 6, 'websocket', 'tool/websocket/index', NULL, 1, 0, 'C', '0', '0', NULL, 'international', 'admin', '2022-07-07 14:38:25', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2019, '账户解锁', 501, 4, '', NULL, NULL, 1, 0, 'F', '0', '0', 'monitor:operlog:export', '#', 'admin', '2022-08-09 03:13:37', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2072, '通知管理', 1, 9, 'notification', 'system/notification/index', NULL, 1, 0, 'C', '0', '0', 'system:notification:list', 'message', 'admin', '2022-10-09 10:51:52', 'admin', '2022-10-09 10:54:27', '通知管理菜单');
+INSERT INTO `sys_menu` VALUES (2073, '通知管理查询', 2072, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'system:notification:query', '#', 'admin', '2022-10-09 10:51:52', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2074, '通知管理新增', 2072, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'system:notification:add', '#', 'admin', '2022-10-09 10:51:52', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2075, '通知管理修改', 2072, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'system:notification:edit', '#', 'admin', '2022-10-09 10:51:52', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2076, '通知管理删除', 2072, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'system:notification:remove', '#', 'admin', '2022-10-09 10:51:52', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2077, '通知管理导出', 2072, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'system:notification:export', '#', 'admin', '2022-10-09 10:51:52', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2078, '通知用户', 1, 9, 'notificationUser', 'system/notification/list', NULL, 1, 1, 'C', '1', '0', 'system:notification:list', 'message', 'admin', '2022-10-09 15:54:57', 'admin', '2022-10-09 16:01:21', '通知公告用户菜单');
 
 -- ----------------------------
 -- Table structure for sys_notice
@@ -681,6 +792,53 @@ CREATE TABLE `sys_notice`  (
 INSERT INTO `sys_notice` VALUES (1, '建行一世工作室发布公告', '2', 0x3C703E32303232E5B9B435E69C883234E697A520E58F91E5B883E6B58BE8AF953C2F703E, '0', 'admin', '2022-05-06 09:33:01', 'test', '2022-05-24 15:31:25', '管理员');
 
 -- ----------------------------
+-- Table structure for sys_notification
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_notification`;
+CREATE TABLE `sys_notification`  (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '创建者',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '更新者',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `deleted` int(2) NULL DEFAULT 0 COMMENT '逻辑删除',
+  `level` int(11) NULL DEFAULT NULL COMMENT '通知级别',
+  `url` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '提供跳转的URL',
+  `title` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '标题',
+  `message` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '内容',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT '通知状态（0正常 1关闭）',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '通知管理' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_notification
+-- ----------------------------
+INSERT INTO `sys_notification` VALUES (23, 'admin', '2022-10-10 09:39:44', NULL, NULL, 0, 1, NULL, '测试1', '测试1测试1测试1测试1测试1测试1', '0');
+
+-- ----------------------------
+-- Table structure for sys_notification_user
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_notification_user`;
+CREATE TABLE `sys_notification_user`  (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `sys_notification_id` bigint(11) NULL DEFAULT NULL COMMENT '通知公告id',
+  `sys_user_name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '通知对象',
+  `status` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT '通知状态（0未读 1已读）',
+  `send` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '是否发送（0未发送 1已发送）',
+  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '创建者',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '更新者',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `deleted` int(2) NULL DEFAULT 0 COMMENT '逻辑删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '通知公告用户' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_notification_user
+-- ----------------------------
+INSERT INTO `sys_notification_user` VALUES (46, 23, 'admin', '1', '1', 'admin', '2022-10-10 09:39:44', NULL, NULL, 0);
+
+-- ----------------------------
 -- Table structure for sys_oper_log
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_oper_log`;
@@ -702,7 +860,7 @@ CREATE TABLE `sys_oper_log`  (
   `error_msg` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '错误消息',
   `oper_time` datetime(0) NULL DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`oper_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -710,6 +868,37 @@ CREATE TABLE `sys_oper_log`  (
 INSERT INTO `sys_oper_log` VALUES (1, '操作日志', 9, 'com.jxys.web.controller.monitor.SysOperlogController.clean()', 'DELETE', 1, 'test', NULL, '/monitor/operlog/clean', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-05-24 15:32:23');
 INSERT INTO `sys_oper_log` VALUES (2, '登录日志', 9, 'com.jxys.web.controller.monitor.SysLogininforController.clean()', 'DELETE', 1, 'test', NULL, '/monitor/logininfor/clean', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-05-24 15:32:29');
 INSERT INTO `sys_oper_log` VALUES (3, '代码生成', 3, 'com.jxys.generator.controller.GenController.remove()', 'DELETE', 1, 'test', NULL, '/tool/gen/4,5,6,7', '127.0.0.1', '内网IP', '{tableIds=4,5,6,7}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-05-24 15:36:38');
+INSERT INTO `sys_oper_log` VALUES (4, '测试名称', 1, 'com.jxys.test.controller.TestNameController.add()', 'POST', 1, 'admin', NULL, '/test/name', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"createTime\":\"2022-06-01T10:51:20.112+08:00\",\"id\":3,\"name\":\"456\",\"params\":{},\"test\":\"789\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-01 10:51:19');
+INSERT INTO `sys_oper_log` VALUES (5, '代码生成', 6, 'com.jxys.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', NULL, '/tool/gen/importTable', '127.0.0.1', '内网IP', 'sys_notice', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-01 10:51:42');
+INSERT INTO `sys_oper_log` VALUES (6, '代码生成', 3, 'com.jxys.generator.controller.GenController.remove()', 'DELETE', 1, 'admin', NULL, '/tool/gen/8', '127.0.0.1', '内网IP', '{tableIds=8}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-01 10:51:44');
+INSERT INTO `sys_oper_log` VALUES (7, '用户管理', 2, 'com.jxys.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2022-05-24 15:29:29\",\"delFlag\":\"0\",\"dept\":{\"ancestors\":\"0,100,101\",\"children\":[],\"deptId\":4,\"deptName\":\"普通管理\",\"orderNum\":2,\"params\":{},\"parentId\":2,\"status\":\"0\"},\"deptId\":4,\"email\":\"\",\"loginDate\":\"2022-05-24 15:30:43\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"测试用户\",\"params\":{},\"password\":\"\",\"phonenumber\":\"13333333333\",\"postIds\":[2],\"roleIds\":[2],\"roles\":[{\"admin\":false,\"dataScope\":\"2\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"roleKey\":\"gly\",\"roleName\":\"管理员\",\"roleSort\":\"2\",\"status\":\"0\"}],\"sex\":\"0\",\"status\":\"0\",\"updateBy\":\"admin\",\"userId\":2,\"userName\":\"test\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-14 10:59:25');
+INSERT INTO `sys_oper_log` VALUES (8, '角色管理', 2, 'com.jxys.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2022-05-06 09:32:57\",\"dataScope\":\"2\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[1,100,1001,1002,1003,1005,1006,101,1008,1009,1010,1011,1012,102,1013,1014,1015,1016,103,1017,1018,1019,1020,104,1021,1022,1023,1024,1025,105,1026,1027,1028,1029,1030,106,1031,1032,1033,1034,1035,107,1036,1037,1038,1039,108,500,1040,1041,1042,501,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,117,3,114,115,1055,1056,1058,1057,1059,1060,116,2009,2010,2011,2007,2008,2012,2013,2014,2015,2016,2017,2000,2001,2002,2003,2004,2005,2006],\"params\":{},\"remark\":\"管理员\",\"roleId\":2,\"roleKey\":\"gly\",\"roleName\":\"管理员\",\"roleSort\":\"2\",\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-27 14:42:44');
+INSERT INTO `sys_oper_log` VALUES (9, '菜单管理', 1, 'com.jxys.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"tool/websocket/index\",\"createBy\":\"admin\",\"icon\":\"international\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"WebSocket\",\"menuType\":\"C\",\"orderNum\":6,\"params\":{},\"parentId\":3,\"path\":\"websocket\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-07-07 14:38:25');
+INSERT INTO `sys_oper_log` VALUES (10, '参数管理', 2, 'com.ths.web.controller.system.SysConfigController.edit()', 'PUT', 1, 'admin', NULL, '/system/config', '127.0.0.1', '内网IP', '{\"configId\":5,\"configKey\":\"sys.account.registerUser\",\"configName\":\"账号自助-是否开启用户注册功能\",\"configType\":\"N\",\"configValue\":\"true\",\"createBy\":\"admin\",\"createTime\":\"2022-05-06 09:33:01\",\"params\":{},\"remark\":\"是否开启注册用户功能（true开启，false关闭）\",\"updateBy\":\"admin\",\"updateTime\":\"2022-05-17 16:57:47\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-07-11 14:19:24');
+INSERT INTO `sys_oper_log` VALUES (11, '参数管理', 2, 'com.ths.web.controller.system.SysConfigController.edit()', 'PUT', 1, 'admin', NULL, '/system/config', '127.0.0.1', '内网IP', '{\"configId\":5,\"configKey\":\"sys.account.registerUser\",\"configName\":\"账号自助-是否开启用户注册功能\",\"configType\":\"Y\",\"configValue\":\"true\",\"createBy\":\"admin\",\"createTime\":\"2022-05-06 09:33:01\",\"params\":{},\"remark\":\"是否开启注册用户功能（true开启，false关闭）\",\"updateBy\":\"admin\",\"updateTime\":\"2022-07-11 14:19:24\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-07-11 14:19:34');
+INSERT INTO `sys_oper_log` VALUES (12, '菜单管理', 3, 'com.ths.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2000', '127.0.0.1', '内网IP', '{menuId=2000}', '{\"msg\":\"存在子菜单,不允许删除\",\"code\":500}', 0, NULL, '2022-07-11 14:28:02');
+INSERT INTO `sys_oper_log` VALUES (13, '菜单管理', 3, 'com.ths.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2002', '127.0.0.1', '内网IP', '{menuId=2002}', '{\"msg\":\"菜单已分配,不允许删除\",\"code\":500}', 0, NULL, '2022-07-11 14:28:06');
+INSERT INTO `sys_oper_log` VALUES (14, '菜单管理', 3, 'com.ths.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2002', '127.0.0.1', '内网IP', '{menuId=2002}', '{\"msg\":\"菜单已分配,不允许删除\",\"code\":500}', 0, NULL, '2022-07-11 14:28:08');
+INSERT INTO `sys_oper_log` VALUES (15, '角色管理', 2, 'com.ths.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2022-05-06 09:32:57\",\"dataScope\":\"2\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[1,100,3,1001,1002,1003,1005,1006,101,1008,1009,1010,1011,1012,102,1013,1014,1015,1016,103,1017,1018,1019,1020,104,1021,1022,1023,1024,1025,105,1026,1027,1028,1029,1030,106,1031,1032,1033,1034,1035,107,1036,1037,1038,1039,108,500,1040,1041,1042,501,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,117,114,115,1055,1056,1058,1057,1059,1060,116,2009,2010,2011,2007,2008,2012,2013,2014,2015,2016,2017],\"params\":{},\"remark\":\"管理员\",\"roleId\":2,\"roleKey\":\"gly\",\"roleName\":\"管理员\",\"roleSort\":\"2\",\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-07-11 14:28:14');
+INSERT INTO `sys_oper_log` VALUES (16, '菜单管理', 3, 'com.ths.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2002', '127.0.0.1', '内网IP', '{menuId=2002}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-07-11 14:28:20');
+INSERT INTO `sys_oper_log` VALUES (17, '菜单管理', 3, 'com.ths.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2003', '127.0.0.1', '内网IP', '{menuId=2003}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-07-11 14:28:21');
+INSERT INTO `sys_oper_log` VALUES (18, '菜单管理', 3, 'com.ths.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2004', '127.0.0.1', '内网IP', '{menuId=2004}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-07-11 14:28:23');
+INSERT INTO `sys_oper_log` VALUES (19, '菜单管理', 3, 'com.ths.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2005', '127.0.0.1', '内网IP', '{menuId=2005}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-07-11 14:28:24');
+INSERT INTO `sys_oper_log` VALUES (20, '菜单管理', 3, 'com.ths.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2006', '127.0.0.1', '内网IP', '{menuId=2006}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-07-11 14:28:26');
+INSERT INTO `sys_oper_log` VALUES (21, '代码生成', 6, 'com.jxys.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', NULL, '/tool/gen/importTable', '127.0.0.1', '内网IP', 'zd_map', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-08-09 02:24:23');
+INSERT INTO `sys_oper_log` VALUES (22, '用户管理', 2, 'com.jxys.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2022-05-24 15:29:29\",\"delFlag\":\"0\",\"dept\":{\"ancestors\":\"0,100,101\",\"children\":[],\"deptId\":4,\"deptName\":\"普通管理\",\"orderNum\":2,\"params\":{},\"parentId\":2,\"status\":\"0\"},\"deptId\":4,\"email\":\"\",\"loginDate\":\"2022-05-24 15:30:43\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"测试用户\",\"params\":{},\"password\":\"\",\"phonenumber\":\"13333333333\",\"postIds\":[2],\"roleIds\":[2],\"roles\":[{\"admin\":false,\"dataScope\":\"2\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"roleKey\":\"gly\",\"roleName\":\"管理员\",\"roleSort\":\"2\",\"status\":\"0\"}],\"sex\":\"0\",\"status\":\"0\",\"updateBy\":\"admin\",\"userId\":2,\"userName\":\"test\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-08-09 02:28:52');
+INSERT INTO `sys_oper_log` VALUES (23, '菜单管理', 1, 'com.jxys.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"账户解锁\",\"menuType\":\"F\",\"orderNum\":4,\"params\":{},\"parentId\":501,\"perms\":\"monitor:operlog:export\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-08-09 03:13:37');
+INSERT INTO `sys_oper_log` VALUES (24, '账户解锁', 0, 'com.jxys.web.controller.monitor.SysLogininforController.unlock()', 'GET', 1, 'admin', NULL, '/monitor/logininfor/unlock/admin', '127.0.0.1', '内网IP', '{userName=admin}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-08-09 03:14:12');
+INSERT INTO `sys_oper_log` VALUES (25, '测试名称', 3, 'com.hxlh.test.controller.TestNameController.remove()', 'DELETE', 1, 'admin', NULL, '/test/name/2', '127.0.0.1', '内网IP', '{ids=2}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-08-09 06:25:45');
+INSERT INTO `sys_oper_log` VALUES (26, '测试名称', 3, 'com.hxlh.test.controller.TestNameController.remove()', 'DELETE', 1, 'admin', NULL, '/test/name/3', '127.0.0.1', '内网IP', '{ids=3}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-08-09 06:26:44');
+INSERT INTO `sys_oper_log` VALUES (27, '字典数据', 1, 'com.jxys.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"dictLabel\":\"其他\",\"dictSort\":99,\"dictType\":\"sys_oper_type\",\"dictValue\":\"99\",\"listClass\":\"info\",\"params\":{},\"remark\":\"其他操作\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-08-23 08:21:11');
+INSERT INTO `sys_oper_log` VALUES (28, '角色管理', 2, 'com.jxys.web.controller.system.SysRoleController.dataScope()', 'PUT', 1, 'admin', NULL, '/system/role/dataScope', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2022-05-06 09:32:57\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"deptIds\":[],\"flag\":false,\"menuCheckStrictly\":true,\"params\":{},\"remark\":\"管理员\",\"roleId\":2,\"roleKey\":\"gly\",\"roleName\":\"管理员\",\"roleSort\":\"2\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-08-23 08:39:32');
+INSERT INTO `sys_oper_log` VALUES (29, '参数管理', 2, 'com.jxys.web.controller.system.SysConfigController.edit()', 'PUT', 1, 'admin', NULL, '/system/config', '127.0.0.1', '内网IP', '{\"configId\":4,\"configKey\":\"sys.account.captchaEnabled\",\"configName\":\"账号自助-验证码开关\",\"configType\":\"Y\",\"configValue\":\"true\",\"createBy\":\"admin\",\"createTime\":\"2022-05-06 09:33:01\",\"params\":{},\"remark\":\"是否开启验证码功能（true开启，false关闭）\",\"updateBy\":\"admin\",\"updateTime\":\"2022-05-17 16:55:26\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-09-21 02:54:45');
+INSERT INTO `sys_oper_log` VALUES (30, '参数管理', 2, 'com.jxys.web.controller.system.SysConfigController.edit()', 'PUT', 1, 'admin', NULL, '/system/config', '127.0.0.1', '内网IP', '{\"configId\":4,\"configKey\":\"sys.account.captchaEnabled\",\"configName\":\"账号自助-验证码开关\",\"configType\":\"Y\",\"configValue\":\"false\",\"createBy\":\"admin\",\"createTime\":\"2022-05-06 09:33:01\",\"params\":{},\"remark\":\"是否开启验证码功能（true开启，false关闭）\",\"updateBy\":\"admin\",\"updateTime\":\"2022-09-21 02:54:45\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-09-21 02:55:08');
+INSERT INTO `sys_oper_log` VALUES (31, '用户管理', 1, 'com.jxys.web.controller.system.SysUserController.add()', 'POST', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"nickName\":\"admin\",\"params\":{},\"postIds\":[],\"roleIds\":[],\"status\":\"0\",\"userName\":\"admin\"}', '{\"msg\":\"新增用户\'admin\'失败，登录账号已存在\",\"code\":500}', 0, NULL, '2022-09-21 02:55:31');
+INSERT INTO `sys_oper_log` VALUES (32, '菜单管理', 2, 'com.jxys.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"system/notice/index\",\"createTime\":\"2022-05-06 09:32:57\",\"icon\":\"message\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":107,\"menuName\":\"公告管理\",\"menuType\":\"C\",\"orderNum\":8,\"params\":{},\"parentId\":1,\"path\":\"notice\",\"perms\":\"system:notice:list\",\"query\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-10-10 01:35:02');
+INSERT INTO `sys_oper_log` VALUES (33, '菜单管理', 2, 'com.jxys.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"system/notice/index\",\"createTime\":\"2022-05-06 09:32:57\",\"icon\":\"druid\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":107,\"menuName\":\"公告管理\",\"menuType\":\"C\",\"orderNum\":8,\"params\":{},\"parentId\":1,\"path\":\"notice\",\"perms\":\"system:notice:list\",\"query\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-10-10 01:35:08');
+INSERT INTO `sys_oper_log` VALUES (34, '通知管理', 1, 'com.jxys.web.controller.system.SysNotificationController.add()', 'POST', 1, 'admin', NULL, '/system/notification', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"createTime\":\"2022-10-10T09:39:44.038+08:00\",\"id\":23,\"level\":1,\"message\":\"测试1测试1测试1测试1测试1测试1\",\"params\":{},\"status\":\"0\",\"title\":\"测试1\",\"usernameArr\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-10-10 01:39:41');
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -761,7 +950,7 @@ CREATE TABLE `sys_role`  (
 -- Records of sys_role
 -- ----------------------------
 INSERT INTO `sys_role` VALUES (1, '超级管理员', 'admin', 1, '1', 1, 1, '0', '0', 'admin', '2022-05-06 09:32:57', '', NULL, '超级管理员');
-INSERT INTO `sys_role` VALUES (2, '管理员', 'gly', 2, '2', 1, 1, '0', '0', 'admin', '2022-05-06 09:32:57', 'admin', '2022-05-24 15:25:10', '管理员');
+INSERT INTO `sys_role` VALUES (2, '管理员', 'gly', 2, '1', 1, 1, '0', '0', 'admin', '2022-05-06 09:32:57', 'admin', '2022-08-23 08:39:32', '管理员');
 
 -- ----------------------------
 -- Table structure for sys_role_dept
@@ -776,9 +965,6 @@ CREATE TABLE `sys_role_dept`  (
 -- ----------------------------
 -- Records of sys_role_dept
 -- ----------------------------
-INSERT INTO `sys_role_dept` VALUES (2, 1);
-INSERT INTO `sys_role_dept` VALUES (2, 2);
-INSERT INTO `sys_role_dept` VALUES (2, 3);
 
 -- ----------------------------
 -- Table structure for sys_role_menu
@@ -813,6 +999,7 @@ INSERT INTO `sys_role_menu` VALUES (2, 113);
 INSERT INTO `sys_role_menu` VALUES (2, 114);
 INSERT INTO `sys_role_menu` VALUES (2, 115);
 INSERT INTO `sys_role_menu` VALUES (2, 116);
+INSERT INTO `sys_role_menu` VALUES (2, 117);
 INSERT INTO `sys_role_menu` VALUES (2, 500);
 INSERT INTO `sys_role_menu` VALUES (2, 501);
 INSERT INTO `sys_role_menu` VALUES (2, 1001);
@@ -873,13 +1060,6 @@ INSERT INTO `sys_role_menu` VALUES (2, 1057);
 INSERT INTO `sys_role_menu` VALUES (2, 1058);
 INSERT INTO `sys_role_menu` VALUES (2, 1059);
 INSERT INTO `sys_role_menu` VALUES (2, 1060);
-INSERT INTO `sys_role_menu` VALUES (2, 2000);
-INSERT INTO `sys_role_menu` VALUES (2, 2001);
-INSERT INTO `sys_role_menu` VALUES (2, 2002);
-INSERT INTO `sys_role_menu` VALUES (2, 2003);
-INSERT INTO `sys_role_menu` VALUES (2, 2004);
-INSERT INTO `sys_role_menu` VALUES (2, 2005);
-INSERT INTO `sys_role_menu` VALUES (2, 2006);
 INSERT INTO `sys_role_menu` VALUES (2, 2007);
 INSERT INTO `sys_role_menu` VALUES (2, 2008);
 INSERT INTO `sys_role_menu` VALUES (2, 2009);
@@ -922,8 +1102,8 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 1, 'admin', '超级管理员', '00', 'a2417978181@163.com', '13831867184', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2022-05-24 15:14:08', 'admin', '2022-05-06 09:32:57', '', '2022-05-24 15:14:07', '管理员');
-INSERT INTO `sys_user` VALUES (2, 4, 'test', '测试用户', '00', '', '13333333333', '0', '', '$2a$10$owHGqSB6arE/A6A1k3ln1u.z93Ds/e4lVUIbAX.jG.wJ4w6emeGoa', '0', '0', '127.0.0.1', '2022-05-24 15:30:43', 'admin', '2022-05-24 15:29:29', '', '2022-05-24 15:30:41', NULL);
+INSERT INTO `sys_user` VALUES (1, 1, 'admin', '超级管理员', '00', 'a2417978181@163.com', '13831867184', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2022-10-10 09:36:58', 'admin', '2022-05-06 09:32:57', '', '2022-10-10 01:36:55', '管理员');
+INSERT INTO `sys_user` VALUES (2, 4, 'test', '测试用户', '00', '', '13333333333', '0', '', '$2a$10$owHGqSB6arE/A6A1k3ln1u.z93Ds/e4lVUIbAX.jG.wJ4w6emeGoa', '0', '0', '127.0.0.1', '2022-05-24 15:30:43', 'admin', '2022-05-24 15:29:29', 'admin', '2022-08-09 02:28:52', NULL);
 
 -- ----------------------------
 -- Table structure for sys_user_post
@@ -971,13 +1151,14 @@ CREATE TABLE `test_name`  (
   `name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '名称',
   `test` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '测试文本',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of test_name
 -- ----------------------------
 INSERT INTO `test_name` VALUES (1, '', NULL, 'admin', '2022-05-06 16:34:31', 1, '123456', '456534534');
-INSERT INTO `test_name` VALUES (2, 'admin', '2022-05-10 11:29:30', NULL, NULL, 0, '123', '456');
+INSERT INTO `test_name` VALUES (2, 'admin', '2022-05-10 11:29:30', NULL, NULL, 1, '123', '456');
+INSERT INTO `test_name` VALUES (3, 'admin', '2022-06-01 10:51:20', NULL, NULL, 1, '456', '789');
 
 -- ----------------------------
 -- Table structure for zd_icon
@@ -2165,7 +2346,7 @@ CREATE TABLE `zd_map`  (
   `ctqh` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '长途区号',
   `pid` bigint(20) NULL DEFAULT NULL COMMENT '父id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4041 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典-地图' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3752 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典-地图' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of zd_map

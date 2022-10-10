@@ -9,7 +9,7 @@
           <el-table-column label="内容" property="message" show-overflow-tooltip></el-table-column>
         </el-table>
         <div style="width: 100%;display: flex;align-items: center;justify-content: flex-end;margin-top: 5px;">
-          <el-button type="text" @click="messageList=[]">清空全部</el-button>
+          <el-button type="text" @click="readAll">全部已读</el-button>
         </div>
       </div>
       <svg-icon slot="reference" icon-class="message" style="height: 100%;" @click="clickOn"/>
@@ -42,6 +42,11 @@ export default {
     this.socket.close();
   },
   methods: {
+    //全部已读
+    readAll() {
+      this.messageList = []
+      this.socket.send("ALL");
+    },
     //向后端反馈已经查看该条消息
     sendMessageRead(item) {
       this.socket.send(item.id);

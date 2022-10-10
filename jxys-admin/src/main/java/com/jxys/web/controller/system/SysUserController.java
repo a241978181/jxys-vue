@@ -67,6 +67,16 @@ public class SysUserController extends BaseController
         return getDataTable(list);
     }
 
+    /**
+     * 获取全部用户（只查询关键字段）
+     */
+    @PreAuthorize("@ss.hasPermi('system:user:list')")
+    @GetMapping("/listAll")
+    public TableDataInfo listAll() {
+        List<SysUser> list = userService.selectUserListAll();
+        return getDataTable(list);
+    }
+
     @Log(title = "用户管理", businessType = BusinessType.EXPORT)
     @PreAuthorize("@ss.hasPermi('system:user:export')")
     @PostMapping("/export")

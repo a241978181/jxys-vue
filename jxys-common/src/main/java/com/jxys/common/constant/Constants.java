@@ -11,6 +11,31 @@ public class Constants{
 
 
     /**
+     * 通知-是否发送-已发送
+     */
+    public static final String NOTIFICATION_SEND_SUCCESS = "1";
+    /**
+     * 通知-是否发送-未发送
+     */
+    public static final String NOTIFICATION_SEND_FAIL = "0";
+
+    /**
+     * 通知-状态-全部已读标识
+     */
+    public static final String NOTIFICATION_STATUS_ALL = "ALL";
+
+    /**
+     * 通知-通知状态-已读
+     */
+    public static final String NOTIFICATION_STATUS_SUCCESS = "1";
+    /**
+     * 通知-通知状态-未读
+     */
+    public static final String NOTIFICATION_STATUS_FAIL = "0";
+
+
+
+    /**
      * 登录用户编号 redis key
      */
     public static final String LOGIN_USERID_KEY = "login_userid:";
