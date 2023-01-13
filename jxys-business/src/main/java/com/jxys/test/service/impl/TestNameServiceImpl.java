@@ -1,12 +1,15 @@
 package com.jxys.test.service.impl;
 
+import com.github.yulichang.wrapper.MPJLambdaWrapper;
+import com.jxys.common.annotation.DataScope;
+import com.jxys.common.constant.Constants;
+import com.jxys.common.core.domain.entity.SysDept;
 import com.jxys.common.utils.StringUtils;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.jxys.framework.aspectj.DataScopeAspect;
 import com.jxys.system.mapper.SysUserMapper;
 import javax.annotation.Resource;
-import java.util.stream.Collectors;
 import java.util.List;
-import com.jxys.common.utils.DateUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.jxys.test.mapper.TestNameMapper;
@@ -39,29 +42,26 @@ public class TestNameServiceImpl implements TestNameService {
 
     /**
      * 查询测试名称列表
-     *
+     * 注意：如果需要使用mybatisplus连表则需要添加括号下面两个数据，如果是单表查询则不需要添加括号内的数据
      * @param testName 测试名称
      * @return 测试名称
      */
     @Override
+    @DataScope(deptAlias = "t",userAlias = "t")
     public List<TestName> selectTestNameList(TestName testName) {
-
         //查询参数
-        QueryWrapper<TestName> queryWrapper = new QueryWrapper();
-
+        MPJLambdaWrapper<TestName> queryWrapper = new MPJLambdaWrapper<>();
+        queryWrapper.orderByDesc(TestName::getCreateTime);
+        queryWrapper.selectAll(TestName.class);
+        queryWrapper.selectAs(SysDept::getDeptName, TestName::getDeptName);
+        queryWrapper.leftJoin(SysDept.class, SysDept::getDeptId, TestName::getDeptId);
         if(StringUtils.isNotNull(testName.getName())  &&StringUtils.isNotEmpty(testName.getName()) ){
-            queryWrapper.like("name", testName.getName());
+            queryWrapper.like(TestName::getName, testName.getName());
         }
-
-        //查询数据
-        List<TestName> list=testNameMapper.selectList(queryWrapper);
-        //查询创建人和修改人
-        list.stream().map(obj -> {
-            obj.setCreateMc(this.sysUserMapper.selectNickUserByUserName(obj.getCreateBy()));
-            obj.setUpdateMc(this.sysUserMapper.selectNickUserByUserName(obj.getUpdateBy()));
-            return obj;
-        }).collect(Collectors.toList());
-
+        if (testName.getParams().size() > 0 && StringUtils.isNotBlank((String.valueOf(testName.getParams().get(DataScopeAspect.DATA_SCOPE))))) {
+            queryWrapper.apply(String.valueOf(testName.getParams().get(DataScopeAspect.DATA_SCOPE)));
+        }
+        List<TestName> list=testNameMapper.selectJoinList(TestName.class,queryWrapper);
         return list;
     }
 
@@ -72,7 +72,8 @@ public class TestNameServiceImpl implements TestNameService {
      * @return 结果
      */
     @Override
-    public int insertTestName(TestName testName) {
+    public int insertTestName(TestName testName,Long deptId) {
+        testName.setDeptId(deptId);
 
         return testNameMapper.insert(testName);
 

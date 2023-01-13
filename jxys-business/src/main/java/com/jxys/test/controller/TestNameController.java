@@ -77,7 +77,7 @@ public class TestNameController extends BaseController
     @PostMapping
     public AjaxResult add(@RequestBody TestName testName)
     {
-        return toAjax(testNameService.insertTestName(testName));
+        return toAjax(testNameService.insertTestName(testName,this.getDeptId()));
     }
 
     /**

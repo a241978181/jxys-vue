@@ -33,7 +33,7 @@ public interface TestNameService
      * @param testName 测试名称
      * @return 结果
      */
-    public int insertTestName(TestName testName);
+    public int insertTestName(TestName testName,Long deptId);
 
     /**
      * 修改测试名称

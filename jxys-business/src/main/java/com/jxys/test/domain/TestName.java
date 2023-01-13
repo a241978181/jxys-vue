@@ -1,6 +1,7 @@
 package com.jxys.test.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -28,6 +29,30 @@ public class TestName  extends BaseEntity  {
     /** 测试文本 */
     @Excel(name = "测试文本")
     private String test;
+
+    /** 部门id */
+    @Excel(name = "部门id")
+    private Long deptId;
+
+    /** 部门名称 */
+    @TableField(exist = false)
+    private String deptName;
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
+
+    public Long getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(Long deptId) {
+        this.deptId = deptId;
+    }
 
     public void setId(Long id){
         this.id = id;

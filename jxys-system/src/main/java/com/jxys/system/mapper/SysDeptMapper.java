@@ -1,6 +1,8 @@
 package com.jxys.system.mapper;
 
 import java.util.List;
+
+import com.github.yulichang.base.MPJBaseMapper;
 import org.apache.ibatis.annotations.Param;
 import com.jxys.common.core.domain.entity.SysDept;
 
@@ -9,7 +11,7 @@ import com.jxys.common.core.domain.entity.SysDept;
  * 
  * @author jxys
  */
-public interface SysDeptMapper
+public interface SysDeptMapper extends MPJBaseMapper<SysDept>
 {
     /**
      * 查询部门管理数据

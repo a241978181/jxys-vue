@@ -64,6 +64,7 @@
     <el-table v-loading="loading" :data="nameList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column show-overflow-tooltip label="名称" align="center" prop="name" min-width="200" />
+      <el-table-column show-overflow-tooltip label="所属机构" align="center" prop="deptName" min-width="200" />
       <el-table-column show-overflow-tooltip label="测试文本" align="center" prop="test" min-width="200" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
