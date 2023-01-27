@@ -1,10 +1,10 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 个人-北京云服务器-内部MySQL-外网链接
+ Source Server         : 数据库
  Source Server Type    : MySQL
  Source Server Version : 50736
- Source Host           : 81.70.231.37:3306
+ Source Host           : ******
  Source Schema         : jxys_vue
 
  Target Server Type    : MySQL

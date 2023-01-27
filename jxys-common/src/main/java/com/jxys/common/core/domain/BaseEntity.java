@@ -1,15 +1,15 @@
 package com.jxys.common.core.domain;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Entity基类
@@ -27,7 +27,6 @@ public class BaseEntity implements Serializable {
 
     /** 创建时间 */
     @TableField(fill = FieldFill.INSERT)
-    @JsonIgnore
     private Date createTime;
 
     /** 更新者账号 */
@@ -40,7 +39,6 @@ public class BaseEntity implements Serializable {
 
     /** 更新时间 */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    @JsonIgnore
     private Date updateTime;
 
     /**逻辑删除字段**/
