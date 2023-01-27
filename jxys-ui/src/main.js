@@ -12,13 +12,13 @@ import store from './store'
 import router from './router'
 import directive from './directive' // directive
 import plugins from './plugins' // plugins
-import { download } from '@/utils/request'
+import {download} from '@/utils/request'
 
 import './assets/icons' // icon
 import './permission' // permission control
-import { getDicts } from "@/api/system/dict/data";
-import { getConfigKey } from "@/api/system/config";
-import { parseTime, resetForm, addDateRange, selectDictLabel, selectDictLabels, handleTree } from "@/utils/jxys";
+import {getDicts} from "@/api/system/dict/data";
+import {getConfigKey} from "@/api/system/config";
+import {addDateRange, handleTree, parseTime, resetForm, selectDictLabel, selectDictLabels} from "@/utils/jxys";
 // 分页组件
 import Pagination from "@/components/Pagination";
 // 自定义表格工具组件
@@ -38,18 +38,15 @@ import VueMeta from 'vue-meta'
 // 字典数据组件
 import DictData from '@/components/DictData'
 //汉字转拼音
-import { pinyin } from 'pinyin-pro';
-let pinyinItem = require('js-pinyin');
+import {pinyin} from 'pinyin-pro';
 // json解析文件
-import { VueJsonp } from 'vue-jsonp'
+import {VueJsonp} from 'vue-jsonp'
+
 Vue.use(VueJsonp)
-
-
 
 
 // 全局方法挂载
 Vue.prototype.pinyin = pinyin  //拼音转换--pinyin-pro
-Vue.prototype.pinyinItem = pinyinItem  //拼音转换--js-pinyin
 Vue.prototype.getDicts = getDicts
 Vue.prototype.getConfigKey = getConfigKey
 Vue.prototype.parseTime = parseTime
