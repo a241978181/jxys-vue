@@ -64,6 +64,10 @@
 	margin-top: 6vh !important;
 }
 
+ .el-message-box__status + .el-message-box__message{
+   word-break: break-word;
+ }
+
 .el-dialog__wrapper.scrollbar .el-dialog .el-dialog__body {
     overflow: auto;
 	overflow-x: hidden;

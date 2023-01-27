@@ -8,6 +8,8 @@ import java.util.Map;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * Entity基类
@@ -15,7 +17,7 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
  * @author 李建
  */
 public class BaseEntity implements Serializable {
-    /** 创建者 */
+    /** 创建者账号 */
     @TableField(fill = FieldFill.INSERT)
     private String createBy;
 
@@ -25,9 +27,10 @@ public class BaseEntity implements Serializable {
 
     /** 创建时间 */
     @TableField(fill = FieldFill.INSERT)
+    @JsonIgnore
     private Date createTime;
 
-    /** 更新者 */
+    /** 更新者账号 */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateBy;
 
@@ -37,10 +40,12 @@ public class BaseEntity implements Serializable {
 
     /** 更新时间 */
     @TableField(fill = FieldFill.INSERT_UPDATE)
+    @JsonIgnore
     private Date updateTime;
 
     /**逻辑删除字段**/
     @TableLogic
+    @JsonIgnore
     private Integer deleted;
 
 
@@ -50,6 +55,7 @@ public class BaseEntity implements Serializable {
 
     /** 请求参数 */
     @TableField(exist = false)
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Map<String, Object> params;
 
     public String getCreateMc() {
