@@ -3,6 +3,7 @@ package com.jxys.framework.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.CacheControl;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -12,6 +13,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.jxys.common.config.RuoYiConfig;
 import com.jxys.common.constant.Constants;
 import com.jxys.framework.interceptor.RepeatSubmitInterceptor;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * 通用配置
@@ -33,7 +36,8 @@ public class ResourcesConfig implements WebMvcConfigurer
 
         /** swagger配置 */
         registry.addResourceHandler("/swagger-ui/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/springfox-swagger-ui/");
+                .addResourceLocations("classpath:/META-INF/resources/webjars/springfox-swagger-ui/")
+                .setCacheControl(CacheControl.maxAge(5, TimeUnit.HOURS).cachePublic());;
     }
 
     /**
