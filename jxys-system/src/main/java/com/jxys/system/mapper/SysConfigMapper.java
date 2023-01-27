@@ -27,6 +27,14 @@ public interface SysConfigMapper
     public List<SysConfig> selectConfigList(SysConfig config);
 
     /**
+     * 通过ID查询配置
+     *
+     * @param configId 参数ID
+     * @return 参数配置信息
+     */
+    public SysConfig selectConfigById(Long configId);
+
+    /**
      * 根据键名查询参数配置信息
      * 
      * @param configKey 参数键名

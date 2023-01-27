@@ -5,7 +5,7 @@
     <parent>
         <artifactId>jxys</artifactId>
         <groupId>com.jxys</groupId>
-        <version>3.8.4</version>
+        <version>3.8.5</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
