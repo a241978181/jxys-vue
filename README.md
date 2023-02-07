@@ -1,6 +1,9 @@
 # jxys-vue
 
-jxys-vue脚手架
+这里提供了一个临时的演示地址，请大家友善使用哦：[jxys-vue脚手架](http://www.jxys.top:2191/login)
+
+* 账号：admin
+* 密码: admin123
 
 ## 简介
 
