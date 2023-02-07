@@ -94,18 +94,18 @@ jxys-vue脚手架
 
 <figure>
     <!--通知红点-->
-    <img src="https://s1.ax1x.com/2023/02/07/pSgcXBd.png" width="40%" height="200">
+    <img src="https://s1.ax1x.com/2023/02/07/pSgcXBd.png">
     <!--通知弹出框-->
-    <img src="https://s1.ax1x.com/2023/02/07/pSgcjHA.png" width="40%" height="200">
+    <img src="https://s1.ax1x.com/2023/02/07/pSgcjHA.png">
 </figure>
 
 #### 2. 地图组件及数据
 
 <figure>
     <!--地图组件-->
-    <img src="https://s1.ax1x.com/2023/02/07/pSggS4P.png" width="40%" height="200">
+    <img src="https://s1.ax1x.com/2023/02/07/pSggS4P.png" >
     <!--地区数据-->
-    <img src="https://s1.ax1x.com/2023/02/07/pSgcxAI.png" width="40%" height="200">
+    <img src="https://s1.ax1x.com/2023/02/07/pSgcxAI.png" >
 </figure>
 
 #### 3. 多样化组件
