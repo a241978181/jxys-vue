@@ -22,9 +22,9 @@ spring:
         druid:
             # 主库数据源
             master:
-                url: jdbc:mysql://81.70.231.37:3306/jxys_vue?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+                url: jdbc:mysql://ip:端口号/jxys_vue?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
                 username: root
-                password: 2190268123asd
+                password: 123456
             # 从库数据源
             slave:
                 # 从数据源开关/默认关闭
